@@ -1,14 +1,36 @@
 <h1><%= current_user.first_name %></h1>
 
 <p>Leave a review for <%=current_user.first_name.capitalize%></p>
-<%= form_with(model: @review, local: true) do |form| %>
+<%= form_with(model: @reviews, local: true) do |form| %>
+
+  <%= form.label :role %>
+  <%= form.select :role, ["borrower", "loaner"] %><br>
+
   <%= form.label :rating %>
-  <%= form.select :rating, [1, 2, 3, 4, 5] %>
+  <%= form.select :rating, [1, 2, 3, 4, 5] %><br>
 
   <%= form.label :body %>
-  <%= form.text_area :body %>
+  <%= form.text_area :body %><br>
 
   <%= form.submit %>
+<% end %>
+
+<p>Reviews as a loaner</p>
+  <ul>
+    <% current_user.received_loaner_reviews.each do |review| %>
+    <li><%= review.rating %></li>
+        <%= review.body %>
+  </ul>
+
+<% end %>
+
+<p>Reviews as a borrower</p>
+  <ul>
+    <% current_user.received_borrower_reviews.each do |review| %>
+    <li><%= review.rating %></li>
+        <%= review.body %>
+  </ul>
+
 <% end %>
 
 

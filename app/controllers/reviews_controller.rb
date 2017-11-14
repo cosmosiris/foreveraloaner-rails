@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @reviewee = User.find(params[:user_id])
+    @reviewer = User.find(current_user)
     @review = Review.new(review_params)
 
     if @review.save
