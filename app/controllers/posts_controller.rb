@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
 
 	def index
 		@posts = Post.all
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@category = @post.category_id
 		@post.destroy
-		redirect_to posts_path 
+		redirect_to posts_path
 	end
 
 	private
