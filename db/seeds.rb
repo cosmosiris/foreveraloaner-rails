@@ -2,6 +2,7 @@ User.destroy_all
 Review.destroy_all
 Category.destroy_all
 Post.destroy_all
+Tag.destroy_all
 
 borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", password: "asdfasdfasdf")
 lender = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", password: "asdfasdfasdf")
@@ -30,3 +31,22 @@ categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", 
 categories.each do |category|
   Category.create!(name: category.downcase)
 end
+
+# tagsss
+posts = Post.all
+posts.each do |post|
+	post.tags.create(name: "hiking")
+	post.tags.create(name: "camping")
+	post.tags.create(name: "sports")
+	post.tags.create(name: "exercise")
+	post.tags.create(name: "equipment")
+	post.tags.create(name: "beach")
+	post.tags.create(name: "tools")
+	post.tags.create(name: "tent")
+	post.tags.create(name: "travel")
+end
+
+
+
+
+
