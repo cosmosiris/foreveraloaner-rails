@@ -10,7 +10,7 @@
 
   <body>
   	<header>
-	  	<% if logged_in?  %>
+	  	<% if user_signed_in?  %>
 	        <%= link_to "Logout", destroy_user_session_path, method: "DELETE" %>
 	        <%= link_to "My Profile", user_path(current_user)  %>
 	    <% else %>
