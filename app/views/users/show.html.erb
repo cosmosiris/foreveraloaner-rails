@@ -1,0 +1,7 @@
+<h1><%= current_user.first_name %></h1>
+
+<p>Leave a review</p>
+<%= form_with model: @review do |form| %>
+  <%= form.text_field :email %>
+  <%= form.submit %>
+<% end %>

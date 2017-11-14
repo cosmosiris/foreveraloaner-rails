@@ -2,13 +2,16 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    resources :users do
-      resources :reviews
-    end 
-
     resources :conversations do
       resources :messages
     end
+    
+
+    get 'users/:id' => 'users#show'
+    resources :users, only: [:show] do
+      resources :reviews
+    end
+
 
     resources :posts do
       resources :transactions
@@ -25,8 +28,8 @@ Rails.application.routes.draw do
 
     # resources :search, only: [:index]
     get '/search', :to => 'search#index'
-  
 
-  
+
+
   root to: 'categories#index'
 end
