@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users 
 
-  namespace :api do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :users do
       resources :reviews
     end 
@@ -26,5 +24,5 @@ Rails.application.routes.draw do
   end
 
   
-  root 'categories#index'
+  root: 'categories#index'
 end
