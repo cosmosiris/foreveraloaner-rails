@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show]
     end
 
+    #Sessions routes
+    resources :sessions, only: [:create, :new]
+    delete 'sessions', to: 'sessions#logout'
+
     # resources :search, only: [:index]
     get '/search', :to => 'search#index'
   
