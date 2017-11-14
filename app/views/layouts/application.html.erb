@@ -20,8 +20,8 @@
 	    <% end %>
 
       <%= link_to "Home", categories_path  %>
-
   	</header>
+    
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -29,5 +29,6 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
     <%= yield %>
+    
   </body>
 </html>
