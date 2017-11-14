@@ -11,8 +11,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to review_path(@review)
     else
-      @error = @review.errors.full_messages
-      render :new
+      @errors = @review.errors.full_messages
+      render :new, status: 422
     end
   end
 
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to review_path(@review)
     else
-       @error = @review.errors.full_messages
+      @errors = @review.errors.full_messages
       render :edit
     end
   end

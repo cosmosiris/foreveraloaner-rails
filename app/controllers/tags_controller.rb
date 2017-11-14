@@ -7,9 +7,8 @@ class TagsController < ApplicationController
     if @post_tag.save
       redirect_to post_path(@post)
     else
-      status 422
       @errors = @tag.errors.full_messages
-      render :new
+      render :new, status: 422
     end
   end
 

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 			redirect_to post_path(@post)
 		else
 			@errors = @post.errors.full_messages
-			render :new
+			render :new, status: 422
 		end
 	end
 
