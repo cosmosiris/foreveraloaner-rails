@@ -6,9 +6,11 @@ Rails.application.routes.draw do
       resources :messages
     end
     
-    resources :users do
+
+    get 'users/:id' => 'users#show'
+    resources :users, only: [:show] do
       resources :reviews
-    end 
+    end
 
 
     resources :posts do
@@ -26,8 +28,8 @@ Rails.application.routes.draw do
 
     # resources :search, only: [:index]
     get '/search', :to => 'search#index'
-  
 
-  
+
+
   root to: 'categories#index'
 end
