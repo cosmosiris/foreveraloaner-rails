@@ -33,17 +33,22 @@ categories.each do |category|
 end
 
 # tagsss
+Tag.create(name: "hiking")
+Tag.create(name: "camping")
+Tag.create(name: "sports")
+Tag.create(name: "exercise")
+Tag.create(name: "equipment")
+Tag.create(name: "beach")
+Tag.create(name: "tools")
+Tag.create(name: "tent")
+Tag.create(name: "travel")
+
 posts = Post.all
+tags = Tag.all 
 posts.each do |post|
-	post.tags.create(name: "hiking")
-	post.tags.create(name: "camping")
-	post.tags.create(name: "sports")
-	post.tags.create(name: "exercise")
-	post.tags.create(name: "equipment")
-	post.tags.create(name: "beach")
-	post.tags.create(name: "tools")
-	post.tags.create(name: "tent")
-	post.tags.create(name: "travel")
+	tags.each do |tag|
+		post.post_tags.create(tag_id: tag.id)
+	end
 end
 
 

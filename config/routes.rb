@@ -29,7 +29,5 @@ Rails.application.routes.draw do
     # resources :search, only: [:index]
     get '/search', :to => 'search#index'
 
-
-
   root to: 'categories#index'
 end
