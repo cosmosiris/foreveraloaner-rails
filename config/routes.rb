@@ -2,14 +2,16 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+    resources :conversations do
+      resources :messages
+    end
+    
+
     get 'users/:id' => 'users#show'
     resources :users, only: [:show] do
       resources :reviews
     end
 
-    resources :conversations do
-      resources :messages
-    end
 
     resources :posts do
       resources :transactions
