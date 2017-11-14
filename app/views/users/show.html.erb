@@ -1,7 +1,14 @@
 <h1><%= current_user.first_name %></h1>
 
-<p>Leave a review</p>
-<%= form_with model: @review do |form| %>
-  <%= form.text_field :email %>
+<p>Leave a review for <%=current_user.first_name.capitalize%></p>
+<%= form_with(model: @review, local: true) do |form| %>
+  <%= form.label :rating %>
+  <%= form.select :rating, [1, 2, 3, 4, 5] %>
+
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+
   <%= form.submit %>
 <% end %>
+
+
