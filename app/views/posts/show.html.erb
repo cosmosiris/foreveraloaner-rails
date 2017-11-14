@@ -1,1 +1,16 @@
 <h1>Post Show</h1>
+
+
+<div>
+	<p>Title: <%= @post.title %></p>
+	<p>Description: <%= @post.description %></p>
+	<p>Price: <%= @post.price %></p>
+	<p>Status: <%= @post.status %></p>
+	<% if @post.negotiable %>
+		<p>Negotiable?: yes</p>
+	<% else %>
+		<p>Negotiable?: no</p>
+	<% end %>
+	<p>Author: <%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></p>
+
+</div>
