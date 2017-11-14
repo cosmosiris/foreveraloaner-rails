@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users 
+  devise_for :users
 
     resources :users do
       resources :reviews
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
     # resources :search, only: [:index]
     get '/search', :to => 'search#index'
-  end
+  
 
   
-  root: 'categories#index'
+  root to: 'categories#index'
 end
