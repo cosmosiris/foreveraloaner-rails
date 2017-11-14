@@ -18,6 +18,10 @@
 	        <%= link_to "Register", new_user_path  %>
 	    <% end %>
       <%= link_to "Home", categories_path  %>
+      <%= form_tag(search_path) do %>
+        <%= text_field_tag :term %>
+        <%= submit_tag 'Search' %>
+      <% end %>
   	</header>
     <%= yield %>
   </body>
