@@ -8,11 +8,20 @@ class Post < ApplicationRecord
 
 	validates 	:title, :description, :price, :status, :negotiable, :loaner_id, :category_id, :status, presence: true
 
+  def initialize
+    @search_results = []
+  end
+
   def self.search(search_term)
     by_tag = self.joins(:tags).where('lower(name) LIKE ?', "%#{search_term.downcase}%" ).distinct
     by_title = self.where('lower(title) LIKE ?', "%#{search_term.downcase}%").order('id DESC')
-    return (by_tag | by_title).uniq
+    return @search_results << (by_tag | by_title).uniq
   end
 
-
+  def self.find_all_by_zips(zips)
+    zips.each do |zip|
+      matched_zips = @search_results.find_by(location: zip)
+    end
+    matched_zips
+  end
 end
