@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 		@categories = Category.all
 		@post = current_user.posts.new(post_params)
 
+
 		if @post.save
 			redirect_to post_path(@post)
 		else
@@ -38,6 +39,8 @@ class PostsController < ApplicationController
 	end
 
 	def update
+		p post_params
+		@categories = Category.all
 		@post = Post.find(params[:id])
 		@post.update_attributes(post_params)
 
@@ -52,9 +55,8 @@ class PostsController < ApplicationController
 
 	def destroy
 		@post = Post.find(params[:id])
-		@category = @post.category_id
 		@post.destroy
-		redirect_to posts_path
+		redirect_to categories_path
 	end
 
 	def search
@@ -63,7 +65,7 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status)
 	end
 
 
