@@ -22,7 +22,7 @@
           <%= link_to "Register", new_user_registration_path  %>
       <% end %>
   	</header>
-    
+
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -30,7 +30,11 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
+    <% if @errors %>
+      <%= render partial: "errors" %>
+    <% end %>
+
     <%= yield %>
-    
+
   </body>
 </html>

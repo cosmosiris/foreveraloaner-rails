@@ -6,7 +6,7 @@ Tag.destroy_all
 PostTag.destroy_all
 
 
-borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", user_name: "britt", password: "asdfasdfasdf")
+borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", bio: "I love all the things", user_name: "britt", password: "asdfasdfasdf")
 loaner = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", user_name: "liv", password: "asdfasdfasdf")
 third = User.create!(first_name: "Roger", last_name: "Li", email: "noneofyour@business.com", user_name: "Roger", password: "asdfasdf")
 
@@ -50,7 +50,7 @@ Tag.create(name: "tent")
 Tag.create(name: "travel")
 
 posts = Post.all
-tags = Tag.all 
+tags = Tag.all
 posts.each do |post|
 	tags.each do |tag|
 		post.post_tags.create(tag_id: tag.id)
