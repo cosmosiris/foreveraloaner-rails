@@ -3,11 +3,11 @@ class PostsController < ApplicationController
 
 	def index
 		search = params[:search]
-    if search
-      @posts = Post.search(search)
-    else
+	    if search
+	      	@posts = Post.search(search)
+	    else
 			@posts = Post.all
-    end
+	    end
 	end
 
 	def new
@@ -33,6 +33,7 @@ class PostsController < ApplicationController
 
 	def edit
 		@post = Post.find(params[:id])
+		@categories = Category.all
 	end
 
 	def update

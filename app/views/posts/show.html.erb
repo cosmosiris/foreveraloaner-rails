@@ -1,6 +1,5 @@
 <h1>Post Show</h1>
 
-
 <div>
 	<p>Title: <%= @post.title %></p>
 	<p>Description: <%= @post.description %></p>
@@ -31,5 +30,8 @@
 			</div>
 		  		<%= f.submit "Create" %>
 		<% end %>
+	</div>
+	<div>
+		<p><%= link_to "Edit Post", edit_post_path(@post)%></p>
 	</div>
 <% end %>
