@@ -22,19 +22,22 @@ class User < ApplicationRecord
   has_many :received_borrower_reviews, -> { where(role: "loaner") }, class_name: :Review, foreign_key: :reviewee_id
   has_many :loaner_reviewers, through: :received_borrower_reviews, source: :reviewer
 
+  # associations for borrowing an item
   has_many :borrower_transactions, class_name: "Transaction", foreign_key: :borrower_id
   has_many :borrowed_posts, through: :borrower_transactions, source: :post
   has_many :users_loaned_from, through: :borrowed_posts, source: :loaner
 
+  # associations for loaning an item
   has_many :posts, foreign_key: :loaner_id
-  has_many :lender_transactions, through: :posts, source: :transactions
-  has_many :users_lent_to, through: :lender_transactions, source: :borrower
-
+  has_many :loaner_transactions, through: :posts, source: :transactions
+  has_many :users_loaned_to, through: :loaner_transactions, source: :borrower
 
   validates :first_name, :last_name, :user_name, :email, :password,presence: true
 
   acts_as_messageable
 
+  # TODO: write two methods: borrower_rating and loaner_rating, which averages the overall ratings received by an user
+  # Write tests for said methods
   def name
     "#{user_name}"
   end

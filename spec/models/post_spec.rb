@@ -1,49 +1,85 @@
 require 'rails_helper'
 
 describe Post do
-  let(:user) { User.create(first_name: "bob", last_name: "bob", bio: "A fun guy", phone_number: "888-888-8888", email: "bob@bob.com", password: "bobby123") }
-  let(:category) { Category.create(name: "Garden") }
-  let(:post) { Post.create(title: "Lawn Mower", description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, loaner: user, category: category) }
+  before(:each) do 
+    @user = User.create(first_name: "Robert", 
+                             last_name: "Vance",
+                             bio: "A fungi",
+                             phone_number: "888-888-8888",
+                             user_name: "BobVance",
+                             email:"bob@vancerefridgeration.com",
+                             password: "bobvance" )
+    @category = Category.create(name: "Garden") 
+    @mower = Post.create(title: "Lawn Mower", description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, loaner: @user, category: @category)
+  end 
 
   context "when input is valid" do
     it "saves post to the database" do
-      expect(Post.all).to eq [post]
+      expect(Post.all).to eq [@mower]
     end
 
     it "has a title" do
-      expect(post.title).to eq "Lawn Mower"
+      expect(@mower.title).to eq "Lawn Mower"
     end
 
     it "has a description" do
-      expect(post.description).to eq "Mows your grass"
+      expect(@mower.description).to eq "Mows your grass"
     end
 
     it "has a price" do
-      expect(post.price).to eq "$40/week"
+      expect(@mower.price).to eq "$40/week"
     end
 
     it "has a status" do
-      expect(post.status).to eq "open"
+      expect(@mower.status).to eq "open"
     end
 
     it "has negotiable" do
-      expect(post.negotiable).to eq true
+
+      expect(@mower.negotiable).to eq true
     end
 
     it "has a loaner" do
-      expect(post.loaner).to eq user
+      expect(@mower.loaner).to eq @user
     end
 
     it "has a category" do
-      expect(post.category).to eq category
+      expect(@mower.category).to eq @category
     end
   end
 
-  context "when input is not valid" do
-    it "does not save post to the database" do
-      post2 = Post.create(title: "Lawn Mower", description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, category: category)
-      post3 = Post.create(description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, category: category)
-      expect(Post.all).to eq [post]
+  # TODO: refactor
+  # context "when input is not valid" do
+  #   it "does not save post to the database" do
+  #     post2 = Post.create(title: "Lawn Mower", description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, category: @category)
+  #     post3 = Post.create(description: "Mows your grass", price: "$40/week", status: "open", negotiable: true, category: category)
+  #     expect(Post.all).to match_array([@mower])
+  #   end
+  # end
+
+  context "Post#search" do
+    before(:each) do 
+      @book = Post.create(title: "a book",
+                          description: "read it lol",
+                          price: "50/yourlife",
+                          status: "open",
+                          negotiable: true,
+                          loaner: @user,
+                          category: @category)
+    end 
+
+    it "allows users to search by post title" do 
+      expect(Post.search("book")).to include(@book)
     end
+
+    it "allows users to search by a post's tags" do 
+
+    end 
+
+    it "returns posts that can match by tag or by title" do 
+      # have a post tagged with "book"
+      # have a post titled "book"
+      # expect method to return both
+    end 
   end
 end
