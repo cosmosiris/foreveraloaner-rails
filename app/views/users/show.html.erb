@@ -1,10 +1,10 @@
-<h1><%= current_user.first_name %></h1>
+<h1><%= @user.first_name.capitalize %></h1>
 
-<p>Leave a review for <%=current_user.first_name.capitalize%></p>
-<%= form_with(model: @reviews, local: true) do |form| %>
-
-  <%= form.label :role %>
-  <%= form.select :role, ["borrower", "loaner"] %><br>
+<p>Leave a review for <%=@user.first_name.capitalize%> as a loaner</p>
+<%= form_for([current_user, @review]) do |form| %>
+  <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
+  <%= form.hidden_field :role, :value=> "borrower" %>
+  <%= form.hidden_field :reviewee_id, :value=> @user.id %>
 
   <%= form.label :rating %>
   <%= form.select :rating, [1, 2, 3, 4, 5] %><br>
@@ -17,20 +17,16 @@
 
 <p>Reviews as a loaner</p>
   <ul>
-    <% current_user.received_loaner_reviews.each do |review| %>
-    <li><%= review.rating %></li>
+    <% @user.received_loaner_reviews.each do |review| %>
+      <li><%= review.rating %></li>
         <%= review.body %>
+    <% end %>
   </ul>
-
-<% end %>
 
 <p>Reviews as a borrower</p>
   <ul>
-    <% current_user.received_borrower_reviews.each do |review| %>
-    <li><%= review.rating %></li>
+    <% @user.received_borrower_reviews.each do |review| %>
+      <li><%= review.rating %></li>
         <%= review.body %>
+    <% end %>
   </ul>
-
-<% end %>
-
-
