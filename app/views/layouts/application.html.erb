@@ -11,16 +11,17 @@
   <body>
 
     <header>
-      <%= link_to "Home", categories_path  %>
-
-      <% if user_signed_in?  %>
-          <%= link_to "Logout", destroy_user_session_path, method: "DELETE" %>
-          <%= link_to "My Profile", user_path(current_user)  %>
-          <%= link_to "Create a Post", new_post_path  %>
-      <% else %>
-          <%= link_to "login", new_user_session_path %>
-          <%= link_to "Register", new_user_registration_path  %>
-      <% end %>
+      <ul class="nav">
+        <li class="nav-li"><%= link_to "Home", categories_path  %></li>
+          <% if user_signed_in?  %>
+              <li class="nav-li"><%= link_to "Logout", destroy_user_session_path, method: "DELETE" %></li>
+              <li class="nav-li"> <%= link_to "My Profile", user_path(current_user)  %></li>
+              <li class="nav-li"><%= link_to "Create a Post", new_post_path  %></li>
+          <% else %>
+              <li class="nav-li"><%= link_to "Login", new_user_session_path %></li>
+              <li class="nav-li"><%= link_to "Register", new_user_registration_path  %></li>
+          <% end %>
+      </ul>
   	</header>
 
       <% if notice %>
