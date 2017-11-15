@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@review = Review.new
 	end
 
 	def new
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-	
+
 	private
 
 	def user_params

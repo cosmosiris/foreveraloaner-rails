@@ -9,6 +9,7 @@
   </head>
 
   <body>
+
     <header>
       <%= link_to "Home", categories_path  %>
 
@@ -20,7 +21,6 @@
           <%= link_to "login", new_user_session_path %>
           <%= link_to "Register", new_user_registration_path  %>
       <% end %>
-
   	</header>
     
       <% if notice %>
@@ -29,6 +29,7 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
+
     <%= yield %>
     
   </body>
