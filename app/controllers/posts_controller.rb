@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
 	def index
-		@posts = Post.all
+		search = params[:search]
+    if search
+      @posts = Post.search(search)
+    else
+			@posts = Post.all
+    end
 	end
 
 	def new
@@ -49,6 +54,9 @@ class PostsController < ApplicationController
 		@post.destroy
 		redirect_to posts_path
 	end
+
+	def search
+  end
 
 	private
 
