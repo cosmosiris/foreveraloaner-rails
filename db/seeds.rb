@@ -3,10 +3,13 @@ Review.destroy_all
 Category.destroy_all
 Post.destroy_all
 Tag.destroy_all
+Post.Tag.destroy_all
 
-borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", password: "asdfasdfasdf")
-loaner = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", password: "asdfasdfasdf")
-third = User.create!(first_name: "Roger", last_name: "Li", email: "noneofyour@business.com", password: "asdfasdf")
+
+borrower = User.create!(first_name: "britt", last_name: "nevins", email:"britt@nevins.com", user_name: "britt", password: "asdfasdfasdf")
+lender = User.create!(first_name: "Olivia", last_name: "Noland", email:"olivia@noland.com", user_name: "liv", password: "asdfasdfasdf")
+third = User.create!(first_name: "Roger", last_name: "Li", email: "noneofyour@business.com", user_name: "Roger", password: "asdfasdf")
+
 
 categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", "Business & Office Supplies", "Clothing", "DIY Supplies", "Electronics", "Farm & Garden", "Fitness & Sporting Equipment", "Furniture", "Games", "Household Items & Appliances", "Kitchen Appliances", "Luggage & Travel Accessories", "Miscellaneous", "Musical Instruments", "Outdoor Equipment", "Party Supplies", "Tools", "Trailers", "Vehicle & Automotive Parts", "VHS & DVD" ]
 
