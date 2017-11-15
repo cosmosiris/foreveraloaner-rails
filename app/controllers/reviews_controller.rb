@@ -12,11 +12,10 @@ class ReviewsController < ApplicationController
   def create
     @reviewee = User.find(params[:user_id])
     @review = Review.new(review_params)
-    p @review
     if @review.save
       redirect_to user_path(@reviewee)
     else
-      p @errors = @review.errors.full_messages
+      @errors = @review.errors.full_messages
       redirect_back(fallback_location: root_path)
     end
   end
