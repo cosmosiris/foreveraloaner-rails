@@ -1,4 +1,5 @@
-<%= form_for @post, url: {action: "create"}, html: {class: "post_form"} do |f| %>
+<%= form_for @post, url: {action: "create"}, html: {class: "post_form"}, local: true do |f| %>
+
 	<div>
 		<%= f.label "Title" %>
 		<%= f.text_field :title %>

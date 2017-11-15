@@ -6,7 +6,8 @@ class Post < ApplicationRecord
 	has_many	  :tags, through: :post_tags
   has_many 	  :transactions
 
-	validates 	:title, :description, :price, :status, :negotiable, :loaner_id, :category_id, :status, presence: true
+	validates 	:title, :description, :price, :status, :loaner_id, :category_id, :status, presence: true
+  validates_inclusion_of :negotiable, in: [true, false]
 
   def self.search(search_term)
     by_tag = self.joins(:tags).where('lower(name) LIKE ?', "%#{search_term.downcase}%" ).distinct
