@@ -176,6 +176,10 @@ describe User do
       end
     end
 
+    context "User#name" do
+      
+    end
+
   end 
 
 
