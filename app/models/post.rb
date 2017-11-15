@@ -4,7 +4,14 @@ class Post < ApplicationRecord
 
 	has_many  	:post_tags
 	has_many	:tags, through: :post_tags
-  	has_many 	:transactions
+  has_many 	:transactions
 
 	validates 	:title, :description, :price, :status, :negotiable, :loaner_id, :category_id, :status, presence: true
+
+  def self.search(search_term)
+    by_tag = self.joins(:tags).where('lower(name) LIKE ?', "%#{search_term.downcase}%" ).distinct
+    by_title = self.where('lower(title) LIKE ?', "%#{search_term.downcase}%").order('id DESC')
+    return (by_tag | by_title).uniq
+  end
+
 end

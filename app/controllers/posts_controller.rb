@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
 	def index
-		@posts = Post.all
+		search = params[:search]
+    if search
+      @posts = Post.search(search)
+    else
+			@posts = Post.all
+    end
 	end
 
 	def new
@@ -47,10 +52,13 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 
+	def search
+  end
+
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :loaner_id, :category_id)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :loaner_id, :category_id, :term)
 	end
 
 
