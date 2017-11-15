@@ -12,10 +12,11 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
+		@categories = Category.all
 	end
 
 	def create
-		@post = Post.new(post_params)
+		@post = current_user.posts.new(post_params)
 
 		if @post.save
 			redirect_to post_path(@post)
@@ -23,6 +24,11 @@ class PostsController < ApplicationController
 			@errors = @post.errors.full_messages
 			render :new, status: 422
 		end
+	end
+
+	def show
+		@post = Post.find(params[:id])
+		@tag = Tag.new
 	end
 
 	def edit
@@ -41,9 +47,6 @@ class PostsController < ApplicationController
 		end
 	end
 
-	def show
-		@post = Post.find(params[:id])
-	end
 
 	def destroy
 		@post = Post.find(params[:id])
@@ -58,7 +61,7 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :loaner_id, :category_id, :term)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id)
 	end
 
 

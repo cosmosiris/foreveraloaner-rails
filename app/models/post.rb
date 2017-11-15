@@ -14,4 +14,5 @@ class Post < ApplicationRecord
     return (by_tag | by_title).uniq
   end
 
+
 end
