@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :username
+
   # reviews written as the loaner
   has_many :written_loaner_reviews, -> { where(role: "loaner") }, class_name: "Review", foreign_key: :reviewer_id
   has_many :reviewed_borrowers, through: :written_loaner_reviews, source: :reviewee
@@ -28,7 +30,7 @@ class User < ApplicationRecord
   acts_as_messageable
 
   def name
-    "#{first_name} #{last_name}"
+    "#{user_name}"
   end
 
   def mailboxer_email(object)

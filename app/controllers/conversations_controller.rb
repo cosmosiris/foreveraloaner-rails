@@ -9,6 +9,8 @@ class ConversationsController < ApplicationController
 
   def new
     @recipients = User.all - [current_user]
+    p @recipients
+    p "*" * 50
   end
 
   def create
