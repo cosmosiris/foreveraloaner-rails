@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 	end
 
 	def create
+		@categories = Category.all
 		@post = current_user.posts.new(post_params)
 
 		if @post.save
