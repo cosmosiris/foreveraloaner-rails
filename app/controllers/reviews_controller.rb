@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @reviews = Review.all
+  end
 
   def new
     @review = Review.new
@@ -7,12 +12,11 @@ class ReviewsController < ApplicationController
   def create
     @reviewee = User.find(params[:user_id])
     @review = Review.new(review_params)
-
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to user_path(@reviewee)
     else
       @errors = @review.errors.full_messages
-      render :new, status: 422
+      redirect_back(fallback_location: root_path)
     end
   end
 

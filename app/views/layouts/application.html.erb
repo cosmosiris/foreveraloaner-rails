@@ -9,26 +9,28 @@
   </head>
 
   <body>
-  	<header>
 
-
-	  	<% if user_signed_in?  %>
-	        <%= link_to "Logout", destroy_user_session_path, method: "DELETE" %>
-	        <%= link_to "My Profile", user_path(current_user)  %>
-	    <% else %>
-	        <%= link_to "login", new_user_session_path %>
-	        <%= link_to "Register", new_user_registration_path  %>
-	    <% end %>
-
+    <header>
       <%= link_to "Home", categories_path  %>
-      
+
+      <% if user_signed_in?  %>
+          <%= link_to "Logout", destroy_user_session_path, method: "DELETE" %>
+          <%= link_to "My Profile", user_path(current_user)  %>
+          <%= link_to "Create a Post", new_post_path  %>
+      <% else %>
+          <%= link_to "login", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path  %>
+      <% end %>
   	</header>
+    
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
+
     <%= yield %>
+    
   </body>
 </html>

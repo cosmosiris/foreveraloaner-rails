@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20171114175939) do
     t.string "last_name", null: false
     t.text "bio"
     t.string "phone_number"
+    t.string "user_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

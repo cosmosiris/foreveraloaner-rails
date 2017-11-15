@@ -9,11 +9,13 @@ class ConversationsController < ApplicationController
 
   def new
     @recipients = User.all - [current_user]
+    p @recipients
+    p "*" * 50
   end
 
   def create
-    @recipient = User.find(params[:user_id])
-    current_user.send_message(recipient, params[:body], params[:subject])
+    @recipient = User.find_by(user_name: params[:user_name])
+    receipt = current_user.send_message(@recipient, params[:body], params[:subject])
     redirect_to conversation_path(receipt.conversation)
   end
 end

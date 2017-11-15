@@ -1,8 +1,13 @@
 <h1>Categories Show/Post Index</h1>
 
+<%= form_tag(posts_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <% @posts.each do |post| %>
 	<ul>
-		<li><%= link_to post.title, post_path(post) %>, $<%=post.price %> </li>
+		<li><%= link_to post.title, post_path(post) %>, <%=post.price %> </li>
 		<p><%= post.description%></p>
 		<% post.tags.each do |tag| %>
 			<span><%= tag.name %></span>
