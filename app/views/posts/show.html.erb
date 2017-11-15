@@ -12,20 +12,24 @@
 		<p>Negotiable?: no</p>
 	<% end %>
 	<p>Author: <%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></p>
-	<% @post.tags.each do |tag| %>
-		<span><%= tag.name %></span>
+
+	<p>Tags:</p>
+	<% @post.tags.each do |post_tag| %>
+		<span><%= link_to "x", post_tag_path(post_tag), method: "DELETE" %><%= post_tag.name %></span>
 	<% end %>
 </div>
 
-<div>
-	<p>Add Tags To Your Post</p>
+<% if @post.loaner == current_user %>
+	<div>
+		<p>Add Tags To Your Post</p>
 
-	<%= form_for @tag, as: :tag, url: tags_path, html: {id: "tag_form" } do |f| %>
-		<div>
-			<%= f.label "Tag Name" %>
-			<%= f.text_field :name %>
-			<%= f.hidden_field :post_id, value: @post.id %>
-		</div>
-	  		<%= f.submit "Create" %>
-	<% end %>
-</div>
+		<%= form_for @tag, as: :tag, url: tags_path, html: {id: "tag_form" } do |f| %>
+			<div>
+				<%= f.label "Tag Name" %>
+				<%= f.text_field :name %>
+				<%= f.hidden_field :post_id, value: @post.id %>
+			</div>
+		  		<%= f.submit "Create" %>
+		<% end %>
+	</div>
+<% end %>

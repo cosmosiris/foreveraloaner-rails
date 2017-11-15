@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     #tags 
-    resources :tags, only: [:create, :destroy]
+    resources :tags, only: [:create]
     
     #post tags
     resources :post_tags, only: [:create, :destroy]

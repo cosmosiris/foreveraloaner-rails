@@ -16,14 +16,6 @@ class TagsController < ApplicationController
     end
   end
 
-  def destroy
-    @post = Post.find(params[:post_id])
-    @post_tag = Tag.find(params[:id])
-    @post_tag.destroy
-
-    redirect_to posts_path
-  end
-
   private
 
 end
