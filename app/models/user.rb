@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :users_lent_to, through: :lender_transactions, source: :borrower
 
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :user_name, :email, :password,presence: true
 
   acts_as_messageable
 

@@ -68,7 +68,26 @@ describe User do
     end 
 
     it "is invalid without a last name" do 
+      bob.last_name = nil
+      expect(bob). to be_invalid
     end 
+
+    it "is invalid without a user name" do 
+      bob.user_name = nil
+      expect(bob). to be_invalid
+    end
+
+    it "is invalid without an email" do
+      bob.email = nil
+      expect(bob). to be_invalid
+    end
+
+    it "is invalid without a password" do
+      bob.password = nil
+      expect(bob). to be_invalid
+    end
+
+
   end 
 
   describe "associations" do 
