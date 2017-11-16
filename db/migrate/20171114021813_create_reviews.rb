@@ -5,7 +5,6 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.text :body
       t.references :reviewer
       t.references :reviewee
-      t.string :role
 
       t.timestamps
     end
