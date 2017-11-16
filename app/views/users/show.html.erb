@@ -1,4 +1,8 @@
 <h1>Meet <%= @user.user_name %></h1>
+<% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
+<% end %>
+
 <p>Average rating: <%= @user.average_rating %></p>
 <p>A little bit about me:</p>
 <p> <%= @user.bio %></p>
