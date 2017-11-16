@@ -39,10 +39,6 @@
 		<%= f.text_field :location %>
 	</div>
 	<div>
-		<%= f.label "Status of this post" %>
-		<%= f.select :status, %w[open closed] %>
-	</div>
-	<div>
 		<%= f.label "Is the price negotiable?"%>
 		<%= f.select :negotiable, [["yes", true], ["no", false]] %>
 	</div>
