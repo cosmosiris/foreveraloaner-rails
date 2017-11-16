@@ -1,0 +1,11 @@
+<%= form_for @transaction,  url: transactions_path, html: {id: "transaction_form"} do |f| %>
+  <div>
+    <%= f.label "Make an Offer" %>
+    <%= f.hidden_field :borrower, value: current_user.id %>
+    <%= f.hidden_field :post, value: @post.id %>
+
+    <%= f.text_field :duration, placeholder: "How long?" %>
+    <%= f.text_field :final_price, placeholder: "Final price" %>
+  </div>
+    <%= f.submit "Borrow" %>
+<% end %>

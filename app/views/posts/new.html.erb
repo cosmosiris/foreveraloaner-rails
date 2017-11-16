@@ -1,48 +1,56 @@
-<%= render 'errors' %>
-
 <div class="post-directions">
 	<p class="center">Please follow the guidelines below for creating a post</p>
 	<ul class="post-directions-list">
-		<li>Title should mention the items you are listing</li>
-		<li>Use the description to explain what type of agreement you are looking for and the condition of the items you are listing</li>
-		<li>Do not mark your post as closed until someone has booked your items or you are no longer offering your items up for rent</li>
-		<li>Your price should be more than just a number. Please format it with a dollar amount and a time period. For example:</li>
+		<li class="directions-list">Title should mention the items you are listing</li>
+		<li class="directions-list">Use the description to explain what type of agreement you are looking for and the condition of the items you are listing</li>
+		<li class="directions-list">Do not mark your post as closed until someone has booked your items or you are no longer offering your items up for rent</li>
+		<li class="directions-list">Your price should be more than just a number. Please format it with a dollar amount and a time period. For example:</li>
 		<ul>
-			<li>$100 a month</li>
-			<li>$10 a day for the entire toolbox</li>
-			<li>$5 a day per sleeping bag</li>
+			<li class="directions-list">$100 a month</li>
+			<li class="directions-list">$10 a day for the entire toolbox</li>
+			<li class="directions-list">$5 a day per sleeping bag</li>
 		</ul>
-		<li>Only share your contact info in the description if you feel comfortable</li>
+		<li class="directions-list">Only share your contact info in the description if you feel comfortable</li>
 	</ul>
 </div>
 
-<%= form_for @post, url: {action: "create"}, html: {class: "post-form", multipart: true} do |f| %>
+<%= form_for @post, url: {action: "create"}, html: {class: "post-form", multipart: true}, class: 'new-post-form' do |f| %>
 
 	<div>
-		<%= f.text_field :title, class: "title-input", placeholder: "Title"%>
+		<%= f.text_field :title, class: "title-input title-box title-text", placeholder: "Title"%>
 	</div>
 	<div>
-		<%= f.text_area :description, class: "desc-input", placeholder: "Description"%>
+		<%= f.text_area :description, class: "desc-input new-post-text", placeholder: "Description"%>
 	</div>
 	<div>
-		<%= f.label "Select a Category"%>
-		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name')%>
+		<%= f.label "Select a Category", class: "category-text" %>
+		<div class='dropdown-content'>
+			<ul class="menu-scroll"><%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name'), {}, { class: "category-select" } %>
+			</ul>
+		</div>
 	</div>
 	<div>
-		<%= f.label "Price" %>
- 		<%= f.text_field :price,  class: "price-input" %>
+		<%= f.label "Price", class: "price-text" %>
+ 		<%= f.text_field :price,  class: "price-input price-box", placeholder: "Ex: $5 a day" %>
 	</div>
 	<div>
-		<%= f.label "Zip Code" %>
-		<%= f.text_field :location %>
+		<%= f.label "Zip Code", class: "zip-text" %>
+		<%= f.text_field :zip_code, class: "zip-box" %>
 	</div>
 	<div>
-		<%= f.label "Is the price negotiable?"%>
-		<%= f.select :negotiable, [["yes", true], ["no", false]] %>
+		<%= f.label "City", class: "zip-text" %>
+		<%= f.text_field :city, class: "zip-box" %>
 	</div>
 	<div>
-		<%= f.label "Image" %>
-		<%= f.file_field :image %>
+		<%= f.label "Is the price negotiable?", class: "negotiate-text" %>
+		<%= f.select :negotiable, [["yes", true], ["no", false]], {}, { class: "negotiable-select" } %>
 	</div>
-  	<%= f.submit "Create" %>
+	<div>
+		<%= f.label "Image", class: "image-text" %>
+		<span class="btn btn-md btn-primary btn-file">
+			Upload
+			<%= f.file_field :image %>
+		</span>
+	</div>
+  	<%= f.submit "Create", class: "create-button" %>
 <% end %>
