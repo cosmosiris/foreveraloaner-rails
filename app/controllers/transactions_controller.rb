@@ -11,7 +11,6 @@ class TransactionsController < ApplicationController
       redirect_to post_path(@post)
     else
       @errors = @transaction.errors.full_messages
-      render :new, status: 422
     end
   end
 
@@ -34,6 +33,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:duration, :final_price)
+    params.require(:transaction).permit(:duration, :final_price, :borrower, :post)
   end
 end

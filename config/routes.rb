@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
 
     #posts & resource tags
+    resources :posts
 
     resources :transactions
 

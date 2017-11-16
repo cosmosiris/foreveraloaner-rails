@@ -8,13 +8,13 @@
 	<table style="width:100%">
 	  <tr>
 	    <th class="table-headers">Price</th>
-	    <th class="table-headers">Status</th> 
+	    <th class="table-headers">Status</th>
 	    <th class="table-headers">Negotiable?</th>
 	    <th class="table-headers">Author</th>
 	  </tr>
 	  <tr>
 	    <td><%= @post.price %></td>
-	    <td><%= @post.status %></td> 
+	    <td><%= @post.status %></td>
 	<% if @post.negotiable %>
 		<td>yes</td>
 	<% else %>
@@ -61,13 +61,14 @@
 	</div>
 <% end %>
 
-<%= form_for @transaction, url: transactions_path do |f| %>
+<%= form_for Transaction.new do |f| %>
 	<div>
 		<%= f.label "Make an Offer" %>
-		<%= f.hidden_field :borrower, :value=> current_user.id %>
-		<%= f.hidden_field :post, :value=> @post.id %>
-		<%= f.text_field :duration %>
-		<%= f.text_field :final_price %>
+		<%= f.hidden_field :borrower, value: current_user.id %>
+		<%= f.hidden_field :post, value: @post.id %>
+
+		<%= f.text_field :duration, placeholder: "How long?" %>
+		<%= f.text_field :final_price, placeholder: "Final price" %>
 	</div>
 		<%= f.submit "Borrow" %>
 <% end %>
