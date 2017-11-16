@@ -1,5 +1,42 @@
 <h1>Edit Post</h1>
 
-<%= render 'form' %>
+<%= render 'errors' %>
+
+<%= form_for @post, url: {action: "update"}, html: {class: "post_form",  multipart: true} do |f| %>
+
+	<div>
+		<%= f.label "Title" %>
+		<%= f.text_field :title %>
+	</div>
+	<div>
+		<%= f.label "Description" %>
+		<%= f.text_area :description, size: "60x12" %>
+	</div>
+	<div>
+		<%= f.label "Status of this post" %>
+		<%= f.select :status, %w[open closed] %>
+	</div>
+	<div>
+		<%= f.label "Price" %>
+ 		<%= f.text_field :price %>
+	</div>
+	<div>
+		<%= f.label "Is the price negotiable?"%>
+		<%= f.select :negotiable, [["yes", true], ["no", false]] %>
+	</div>
+	<div>
+		<%= f.label "Zip Code" %>
+		<%= f.text_field :location %>
+	</div>
+	<div>
+		<%= f.label "Select a Category"%>
+		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name')%>
+	</div>
+	<div>
+		<%= f.label "Image" %>
+		<%= f.file_field :image %>
+	</div>
+  	<%= f.submit "Update" %>
+<% end %>
 
 <%= link_to 'Back', post_path(@post) %>

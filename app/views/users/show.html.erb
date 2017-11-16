@@ -1,7 +1,18 @@
-<h1><%= @user.first_name.capitalize %></h1>
+<h1>Meet <%= @user.user_name %></h1>
+<p>Average rating: <%= @user.average_rating %></p>
+<p>A little bit about me:</p>
+<p> <%= @user.bio %></p>
+<h3>Things you can borrow from <%= @user.user_name %>:</h3>
+<ul>
+  <% @user.posts.each do |post| %>
+    <% if post.status == "open" %>
+      <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+  <% end %>
+</ul>
 
-<h3>Reviews as a loaner</h3>
-<p>Leave a review for <%=@user.first_name.capitalize%> as a loaner</p>
+<h3><%= @user.user_name %> as a loaner</h3>
+<p>Leave a review for <%=@user.user_name.capitalize%> as a loaner</p>
 <%= form_for([current_user, @review]) do |form| %>
   <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
   <%= form.hidden_field :role, :value=> "borrower" %>
@@ -23,8 +34,8 @@
     <% end %>
   </ul>
 
-<h3>Reviews as a borrower</h3>
-<p>Leave a review for <%=@user.first_name.capitalize%> as a borrower</p>
+<h3><%= @user.user_name %> as a borrower</h3>
+<p>Leave a review for <%=@user.user_name.capitalize%> as a borrower</p>
 <%= form_for([current_user, @review]) do |form| %>
   <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
   <%= form.hidden_field :role, :value=> "loaner" %>

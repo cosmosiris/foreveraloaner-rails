@@ -2,14 +2,21 @@
 
 <div>
 	<p>Title: <%= @post.title %></p>
+
+	<%= image_tag @post.image.url(:medium) %>
+
 	<p>Description: <%= @post.description %></p>
+
 	<p>Price: <%= @post.price %></p>
+
 	<p>Status: <%= @post.status %></p>
+
 	<% if @post.negotiable %>
 		<p>Negotiable?: yes</p>
 	<% else %>
 		<p>Negotiable?: no</p>
 	<% end %>
+
 	<p>Author: <%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></p>
 
 	<% if @post.loaner == current_user %>
@@ -41,5 +48,6 @@
 	</div>
 	<div>
 		<p><%= link_to "Edit Post", edit_post_path(@post)%></p>
+		<p><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></p>
 	</div>
 <% end %>
