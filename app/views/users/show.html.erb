@@ -56,21 +56,23 @@
     <% end %>
   </ul>
 
+<% if @user != current_user %>
   <h1>New Conversation With <%= @user.user_name %></h1>
 
-<%= form_tag conversations_path, method: :post do %>
-  <div>
-    <%= text_field_tag :user_name, nil, value: @user.user_name %>
-  </div>
+  <%= form_tag conversations_path, method: :post do %>
+    <div>
+      <%= text_field_tag :user_name, nil, value: @user.user_name %>
+    </div>
 
-  <div>
-    <%= text_field_tag :subject, nil, placeholder: "subject" %>
-  </div>
+    <div>
+      <%= text_field_tag :subject, nil, placeholder: "subject" %>
+    </div>
 
-  <div>
-    <%= text_area_tag :body, nil, placeholder: "message" %>
-  </div>
+    <div>
+      <%= text_area_tag :body, nil, placeholder: "message" %>
+    </div>
 
-  <%= submit_tag %>
+    <%= submit_tag %>
 
+  <% end %>
 <% end %>
