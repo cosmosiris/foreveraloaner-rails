@@ -171,8 +171,8 @@
 
 .btn-file input[type=file] {
     position: absolute;
-    top: 50px;
-    right: 0;
+    top: 5px;
+    right: 5px;
     min-width: 100%;
     min-height: 80%;
     font-size: 300px;
@@ -192,7 +192,7 @@
 	border-color: #000000;
 	border-width: 2px;
 	border-radius: 5px;
-	outline: 0px;
+	// outline: 0px;
 }
 
 .btn-primary:hover {
