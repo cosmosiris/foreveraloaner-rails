@@ -93,6 +93,11 @@ describe Post do
       post.status = nil
       expect(post).to be_invalid
     end
+
+    it "is invalid without including negotiable" do
+      post.negotiable = nil
+      expect(post).to be_invalid
+    end
   end
 
   describe "associations" do
