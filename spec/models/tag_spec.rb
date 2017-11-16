@@ -58,10 +58,10 @@ describe Tag do
       expect(tag.post_tags).to include(post)
     end
 
-  #   it "has many posts through tags" do
-  #     expect(tag.posts).to include (post)
-  #   end
-  # end
+    it "has many posts through tags" do
+      expect(tag.posts).to include (post)
+    end
+  end
 
 
 

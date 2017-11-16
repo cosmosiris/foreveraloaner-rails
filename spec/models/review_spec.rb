@@ -58,7 +58,7 @@ let(:review) { Review.create(rating: "4",
   describe "associations" do 
     it "belongs to a reviewer" do
       expect(review.reviewer).to eq phyllis
-    end
+    end 
 
     it "belongs to a reviewee" do
       expect(review.reviewee).to eq bob
