@@ -9,18 +9,20 @@
 	  <tr>
 	    <th class="table-headers">Price</th>
 	    <th class="table-headers">Status</th> 
-	    <th class="table-headers">Negotiable?</th>
 	    <th class="table-headers">Author</th>
+	    <th class="table-headers">Location</th>
+	    <th class="table-headers">Negotiable?</th>
 	  </tr>
 	  <tr>
 	    <td><%= @post.price %></td>
 	    <td><%= @post.status %></td> 
+		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
+		<td><%= @post.location %></td>
 	<% if @post.negotiable %>
 		<td>yes</td>
 	<% else %>
 		<td>no</td>
 	<% end %>
-		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
 	  </tr>
 	</table>
 
