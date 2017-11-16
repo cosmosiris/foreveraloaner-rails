@@ -1,34 +1,45 @@
-<h1>Post Show</h1>
-
 <div>
-	<p>Title: <%= @post.title %></p>
+	<p class="post-title"><%= @post.title %></p>
 
 	<%= image_tag @post.image.url(:medium) %>
 
-	<p>Description: <%= @post.description %></p>
+	<p class="post-description"><%= @post.description %></p>
 
-	<p>Price: <%= @post.price %></p>
-
-	<p>Status: <%= @post.status %></p>
-
+	<table style="width:100%">
+	  <tr>
+	    <th class="table-headers">Price</th>
+	    <th class="table-headers">Status</th> 
+	    <th class="table-headers">Negotiable?</th>
+	    <th class="table-headers">Author</th>
+	  </tr>
+	  <tr>
+	    <td><%= @post.price %></td>
+	    <td><%= @post.status %></td> 
 	<% if @post.negotiable %>
-		<p>Negotiable?: yes</p>
+		<td>yes</td>
 	<% else %>
-		<p>Negotiable?: no</p>
+		<td>no</td>
 	<% end %>
+		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
+	  </tr>
+	</table>
 
-	<p>Author: <%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></p>
+
 
 	<% if @post.loaner == current_user %>
-		<p>Tags:</p>
-		<% @post.tags.each do |tag| %>
-			<span><%= link_to "x", post_tag_path(tag, post_id: @post.id), method: "DELETE" %><%= tag.name %></span>
-		<% end %>
+		<div class="tag-box">
+			<p>Tags</p>
+			<% @post.tags.each do |tag| %>
+				<span><%= link_to "x", post_tag_path(tag, post_id: @post.id), method: "DELETE" %><%= tag.name %></span>
+			<% end %>
+		</div>
 	<% else%>
-		<p>Tags:</p>
-		<% @post.tags.each do |tag| %>
-			<span><%= tag.name %></span>
-		<% end %>
+		<div class="tag-box">
+			<p>Tags</p>
+			<% @post.tags.each do |tag| %>
+				<span><%= tag.name %></span>
+			<% end %>
+		</div>
 	<% end %>
 
 </div>
