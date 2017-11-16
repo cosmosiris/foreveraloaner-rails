@@ -2,6 +2,8 @@
 
 <%= form_tag(posts_path, method: :get) do %>
   <%= text_field_tag :search, params[:search] %>
+  <%= text_field_tag :zip_code, params[:zip_code] %>
+  <%= text_field_tag :distance, params[:distance] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 

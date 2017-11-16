@@ -4,9 +4,15 @@ class PostsController < ApplicationController
 	def index
 		search = params[:search]
 	    if search
-	      	@posts = Post.search(search)
+	    	zip_codes = ZipCodeAdapter.zip_search(params[:zip_code], params[:distance])
+	      p "*" * 100
+	      p params[:search]
+	    	p params[:zip_code]
+	    	p params[:distance]
+	      @posts = Post.in_zips(zip_codes).search(search)
+	      p @posts
 	    else
-			@posts = Post.all
+				@posts = Post.all
 	    end
 	end
 

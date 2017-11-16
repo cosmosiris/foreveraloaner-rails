@@ -50,14 +50,11 @@ Tag.create(name: "tent")
 Tag.create(name: "travel")
 
 posts = Post.all
-tags = Tag.all 
+tags = Tag.all
 posts.each do |post|
 	tags.each do |tag|
 		post.post_tags.create(tag_id: tag.id)
 	end
 end
-
-
-
 
 

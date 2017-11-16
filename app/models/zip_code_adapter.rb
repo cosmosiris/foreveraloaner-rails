@@ -10,6 +10,6 @@ base_uri "zipcodeapi.com/rest"
     zips = res.parsed_response['zip_codes'].map do |zip|
       zip['zip_code']
     end
-    Post.find_all_by_zips(zips)
+    zips
   end
 end
