@@ -1,6 +1,7 @@
 <%= render 'errors' %>
 
 <div class="post-directions">
+	<h1 id="new-post-header">Create New Post</h1>
 	<p class="center">Please follow the guidelines below for creating a post</p>
 	<ul class="post-directions-list">
 		<li class="directions-list">Title should mention the items you are listing</li>
@@ -51,8 +52,9 @@
 		<%= f.label "Image", class: "image-text" %>
 		<span class="btn btn-md btn-primary btn-file">
 			Upload
-			<%= f.file_field :image %>
+			<%= f.file_field :image, id: "img-upload" %>
 		</span>
+		<span id="upload-filename"></span>
 	</div>
   	<%= f.submit "Create", class: "create-button" %>
 <% end %>

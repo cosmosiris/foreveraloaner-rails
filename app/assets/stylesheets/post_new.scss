@@ -78,45 +78,45 @@
 	outline: none;
 }
 
+.price-text {
+  padding: 10px;
+  // padding-top: 15px;
+  font-size: 30px;
+  color: #444444;
+}
+
+.price-box {
+  width: 15%;
+  border-color: #000000;
+  border-radius: 5px;
+  padding: 7px;
+  margin: 7px;
+  outline: none;
+  font-style: italic;
+}
+
+.zip-text {
+  padding: 10px;
+  font-size: 30px;
+  color: #444444;
+}
+
+.zip-box {
+  width: 8%;
+  border-color: #000000;
+  border-radius: 5px;
+  padding: 7px;
+  margin: 7px;
+  outline: none;
+}
+
 .category-text {
 	padding: 10px;
 	font-size: 35px;
 	color: #444444;
 }
-
-.price-text {
-	padding: 10px;
-	font-size: 30px;
-	color: #444444;
-}
-
-.price-box {
-	width: 15%;
-	border-color: #000000;
-	border-radius: 5px;
-	padding: 7px;
-	margin: 7px;
-	outline: none;
-	font-style: italic;
-}
-
-.zip-text {
-	padding: 10px;
-	font-size: 30px;
-	color: #444444;
-}
-
-.zip-box {
-	width: 8%;
-	border-color: #000000;
-	border-radius: 5px;
-	padding: 7px;
-	margin: 7px;
-	outline: none;
-}
-
 .category-select {
-	border-color: #000000;
+  border-color: #000000;
 	border-width: 2px;
 	border-radius: 10px;
 	height: 45px;
