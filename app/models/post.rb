@@ -20,11 +20,11 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, content_type: ["image/jpeg", "image/gif", "image/png"]
 
   #search bar
-  def self.search(search_term)
-    by_tag = self.joins(:tags).where('lower(name) LIKE ?', "%#{search_term.downcase}%" ).distinct
-    by_title = self.where('lower(title) LIKE ?', "%#{search_term.downcase}%").order('id DESC')
-    return (by_tag | by_title).uniq
-  end
+  # def self.search(search_term)
+  #   by_tag = self.joins(:tags).where('lower(name) LIKE ?', "%#{search_term.downcase}%" ).distinct
+  #   by_title = self.where('lower(title) LIKE ?', "%#{search_term.downcase}%").order('id DESC')
+  #   return (by_tag | by_title).uniq
+  # end
 
   # def self.search(search_term)
   #   # by_tag = self.joins(:tags).where('lower(name) LIKE %?% OR lower(title) LIKE %?%', search_term.downcase, search_term.downcase).distinct.order('id DESC')
