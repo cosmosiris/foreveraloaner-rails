@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -53,6 +54,9 @@ group :development do
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-
-
+#login, logout, user authentication
 gem 'devise'
+
+
+#paperclip gem for image loading
+gem "paperclip", "~> 5.0.0"

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
 
 		if @post.save
-			redirect_to post_path(@post)
+			redirect_to post_path(@post), notice: "Post was successfully created"
 		else
 			@errors = @post.errors.full_messages
 			render :new, status: 422
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 		@post.update_attributes(post_params)
 
 		if @post.save
-			redirect_to post_path(@post)
+			redirect_to post_path(@post), notice: "Post was successfully updated"
 		else
 			@errors = @post.errors.full_messages
 			render :edit
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to categories_path
+		redirect_to categories_path, notice: "Post was successfully destroyed"
 	end
 
 	def search
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status, :image)
 	end
 
 
