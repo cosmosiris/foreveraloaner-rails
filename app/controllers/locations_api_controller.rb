@@ -1,0 +1,3 @@
+class LocationsApiController < ApplicationController
+
+end
