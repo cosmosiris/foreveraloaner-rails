@@ -43,7 +43,7 @@
 </div>
 
 <% if @post.loaner == current_user %>
-	<div>
+	<div class="add-tags-box">
 		<p>Add Tags To Your Post</p>
 
 		<%= form_for @tag, as: :tag, url: tags_path, html: {id: "tag_form" } do |f| %>
@@ -51,12 +51,12 @@
 				<%= f.label "Tag Name" %>
 				<%= f.text_field :name %>
 				<%= f.hidden_field :post_id, value: @post.id %>
-			</div>
 		  		<%= f.submit "Create" %>
+			</div>
 		<% end %>
 	</div>
 	<div>
-		<p><%= link_to "Edit Post", edit_post_path(@post)%></p>
-		<p><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></p>
+		<p><span class="edit-btn"><%= link_to "Edit Post", edit_post_path(@post)%></span>
+		<span class="delete-btn"><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></span></p>
 	</div>
 <% end %>
