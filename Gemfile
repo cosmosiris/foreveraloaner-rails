@@ -54,9 +54,15 @@ group :development do
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+#location-api
+gem 'dotenv-rails'
+gem 'extra_print'
+gem 'httparty'
+
 #login, logout, user authentication
 gem 'devise'
 
 
 #paperclip gem for image loading
 gem "paperclip", "~> 5.0.0"
+
