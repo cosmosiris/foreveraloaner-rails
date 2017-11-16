@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	has_many	  :tags, through: :post_tags
   has_many 	  :transactions
 
-	validates 	:title, :description, :price, :status, :loaner_id, :category_id, :status, presence: true
+	validates 	:title, :description, :price, :status, :loaner_id, :category_id, :city, :zip_code, presence: true
   
   #the validation below is neccessary because false values do not pass validation tests
   validates_inclusion_of :negotiable, in: [true, false]

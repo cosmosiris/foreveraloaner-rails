@@ -25,12 +25,6 @@ module ZipCodeAdapter
       zip['zip_code']
     end
 
-    # cities = res.parsed_response['city'].map do |city|
-    #   city['city']
-    # end
-
-    # zips.zip(cities)
-
     zips
   end
 end
