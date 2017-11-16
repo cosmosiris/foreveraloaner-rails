@@ -125,6 +125,7 @@ describe User do
     end 
 
     context "borrowing items" do 
+
       it "can borrow an item" do 
         expect(phyllis.borrowed_posts).to include(@post)
       end 
@@ -176,9 +177,12 @@ describe User do
       end
     end
 
-    # context "User#name" do
+    context "User#name" do
       
-    # end
+      it "is combines the user's first and last name" do
+        expect(bob.name). to eq "Robert Vance"
+      end
+    end
 
   end 
 

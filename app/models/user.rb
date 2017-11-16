@@ -41,7 +41,7 @@ class User < ApplicationRecord
   # TODO: write two methods: borrower_rating and loaner_rating, which averages the overall ratings received by an user
   # Write tests for said methods
   def name
-    "#{user_name}"
+    "#{first_name} #{last_name}"
   end
 
   def mailboxer_email(object)
