@@ -2,13 +2,19 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
 	def index
-		search = params[:search]
-	    if search
+		search_term = params[:term]
+
+		@posts = Post.all
+
+		if params[:zip_code].length > 0
+			params[:distance] = 10 if params[:distance].blank?
 	    	zip_codes = ZipCodeAdapter.zip_search(params[:zip_code], params[:distance])
-	      @posts = Post.in_zips(zip_codes).search(search)
-	    else
-				@posts = Post.all
-	    end
+			@posts = @posts.in_zips(zip_codes)
+		end
+
+		@posts = @posts.search(search_term) if search_term
+
+		@errors = ["No results found, ensure that your zipcode is real"] if @posts.empty?  
 	end
 
 	def new
@@ -61,8 +67,7 @@ class PostsController < ApplicationController
 		redirect_to categories_path, notice: "Post was successfully destroyed"
 	end
 
-	def search
-  end
+	
 
 	private
 
@@ -70,5 +75,8 @@ class PostsController < ApplicationController
 		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status, :image)
 	end
 
+	def search_params
+		params.require(:search).permit(:keyword)
+ 	end
 
 end
