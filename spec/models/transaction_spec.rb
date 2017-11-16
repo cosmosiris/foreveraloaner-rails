@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tag do
+describe Transaction do 
   let(:bob) { User.create(first_name: "Robert", 
                             last_name: "Vance",
                             bio: "A fungi",
@@ -27,42 +27,38 @@ describe Tag do
                                          post: post,
                                          duration: "5 days",
                                          final_price: 30)}
-  let(:review) { Review.create(rating: "4",
-                               body: "a good experience",
-                               reviewer: phyllis,
-                               reviewee: bob,
-                               role: "borrower")}
-  let(:tag) { Tag.create(name:"outdoor") }
 
-  context "when input is valid" do 
-    it "creates a new tag in the database" do
-      expect(tag).to be_valid
-    end
-  end
-
-  describe "has basic attributes" do
-    it "has a name" do
-      expect(tag.name).to eq "outdoor"
-    end
-  end
-
-  describe "validations" do 
-    it "is invalid without a name" do
-      tag.name = nil
-      expect(tag).to be_invalid
-    end
+  context "when input is valid" do
+    it "creates a new transaction in the database" do
+      expect(transaction).to be_valid
+    end 
   end 
 
-  describe "associations" do
-    it "has many tags in a post" do
-      expect(tag.post_tags).to include(post)
+  describe "has basic attributes" do
+    it "has a borrower" do 
+      expect(transaction.borrower).to eq phyllis
     end
 
-  #   it "has many posts through tags" do
-  #     expect(tag.posts).to include (post)
-  #   end
-  # end
+    it "has a post" do
+      expect(transaction.post).to eq post
+    end
 
+    it "has a duration" do 
+      expect(transaction.duration).to eq "5 days"
+    end 
 
+    it "has a final price" do 
+      expect(transaction.final_price).to eq 30
+    end
+  end
 
+  describe "associations" do
+    it "has someone who borrows the post" do
+      expect(transaction.borrower).to eq phyllis
+    end
+
+    it "belongs to a post" do 
+      expect(transaction.post). to eq post
+    end
+  end
 end
