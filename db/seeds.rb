@@ -21,7 +21,8 @@ categories.map! { |category| Category.create(name: category) }
 	      description: Faker::HarryPotter.quote,
 	      price: Faker::Number.decimal(2),
 	      status: "open",
-	      location: Faker::Address.zip,
+	      zip_code: Faker::Address.zip,
+	      city: Faker::Address.city,
 	      negotiable: "true",
 	      loaner: loaner
 	    }
