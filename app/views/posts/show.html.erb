@@ -1,4 +1,6 @@
 <div>
+	<%= render 'errors' %>
+
 	<p class="post-title"><%= @post.title %></p>
 
 	<%= image_tag @post.image.url(:medium) %>
@@ -9,20 +11,22 @@
 	  <tr>
 	    <th class="table-headers">Price</th>
 	    <th class="table-headers">Status</th> 
-	    <th class="table-headers">Negotiable?</th>
 	    <th class="table-headers">Author</th>
+	    <th class="table-headers">Location</th>
+	    <th class="table-headers">Negotiable?</th>
 	  </tr>
 	  <tr>
 	    <td><%= @post.price %></td>
 	    <td><%= @post.status %></td> 
-	<% if @post.negotiable %>
-		<td>yes</td>
-	<% else %>
-		<td>no</td>
-	<% end %>
-		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
-	  </tr>
-	</table>
+		  <td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
+		  <td><%= @post.location %></td>
+	  <% if @post.negotiable %>
+	  	<td>yes</td>
+	  <% else %>
+	  	<td>no</td>
+	  <% end %>
+	    </tr>
+  	</table>
 
 
 
@@ -60,3 +64,29 @@
 		<span class="delete-btn"><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></span></p>
 	</div>
 <% end %>
+
+<%= form_for @transaction, as: :transaction,  url: transactions_path do |f| %>
+  <div>
+    <%= f.label "Make an Offer" %>
+    <%= f.hidden_field :borrower_id, value: current_user.id %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+
+    <%= f.text_field :duration, placeholder: "How long?" %>
+    <%= f.text_field :final_price, placeholder: "Final price" %>
+  </div>
+    <%= f.submit "Borrow" %>
+<% end %>
+
+<% @post.transactions.each do |transaction| %>
+	<p>Duration:<%= transaction.duration  %></p>
+	<p>Final Price:<%= transaction.final_price %></p>
+<% end %>
+
+
+
+
+
+
+
+
+
