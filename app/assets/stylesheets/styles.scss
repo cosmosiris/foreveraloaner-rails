@@ -8,40 +8,44 @@ body {
 
 .left-body-column {
     float: left;
-    width: 25%;
+    width: 27%;
     height: 100%;
-    padding: 10px;
     position: fixed;
-    margin-left: 10px;
-    background-image: url("faltest2.jpg");
+    margin-left: 40px;
+    margin-top: 20px;
+    background-image: url("fallonglogo.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
   }
 
 .right-body-column {
     float: right;
-    width: 72%;
+    width: 70%;
     padding: 10px;
+    margin-top: 9px;
 }
 
 .nav {
     list-style-type: none;
-    margin: 0;
+    margin-right: 10px;
+    margin-top: -5px;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-    width: 103%;
+    background-color: #444444;
+    width: 101%;
+    opacity: 0.8;
 }
 
 .nav-li {
-    float: left;
+    float: center;
+    margin-left: 16px;
 }
 
 .nav-li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 12px;
     text-decoration: none;
 }
 
@@ -51,21 +55,40 @@ body {
 
 .search-bar {
     width: 100%;
-    margin-top: 220px;
+    margin-top: 250px;
 }
 
 .search-style {
-    width: 103%;
+    width: 100%;
+}
+
+.input-lg {
+    height: 50px;
+    outline: 0px;
+}
+
+.btn {
+    color: black;
+    border-radius: 0;
+    height: 50px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #FFFFFF;
+    background-color: #777777;
 }
 
 .dropbtn {
-    background-color: #66EE99;
+    background-color: #66FFAA   ;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 103%;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .dropdown {
@@ -79,7 +102,6 @@ body {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    // min-width: 260px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     width: 100%;
@@ -96,7 +118,6 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    // overflow: scroll;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
@@ -106,6 +127,8 @@ body {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #66FF99;
-    color: #444444
+    background-color: #66EEAA;
+    color: #FFFFFF
 }
+
+

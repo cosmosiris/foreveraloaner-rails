@@ -10,21 +10,25 @@
 	<table style="width:100%">
 	  <tr>
 	    <th class="table-headers">Price</th>
-	    <th class="table-headers">Status</th>
-	    <th class="table-headers">Negotiable?</th>
+	    <th class="table-headers">Status</th> 
 	    <th class="table-headers">Author</th>
+	    <th class="table-headers">City</th>
+	    <th class="table-headers">Zip Code</th>
+	    <th class="table-headers">Negotiable?</th>
 	  </tr>
 	  <tr>
 	    <td><%= @post.price %></td>
-	    <td><%= @post.status %></td>
-	<% if @post.negotiable %>
-		<td>yes</td>
-	<% else %>
-		<td>no</td>
-	<% end %>
+	    <td><%= @post.status %></td> 
 		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
-	  </tr>
-	</table>
+		<td><%= @post.city %></td>
+		<td><%= @post.zip_code %></td>
+	  <% if @post.negotiable %>
+	  	<td>yes</td>
+	  <% else %>
+	  	<td>no</td>
+	  <% end %>
+	    </tr>
+  	</table>
 
 
 

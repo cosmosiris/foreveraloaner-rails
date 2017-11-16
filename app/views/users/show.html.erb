@@ -90,20 +90,21 @@
 
 
 <!-- private messaging -->
-<div class="messaging-box">
-  <p>Send a Private Message to <%= @user.user_name.capitalize %></p>
+<% if @user != current_user %>
+  <div class="messaging-box">
+    <p>Send a Private Message to <%= @user.user_name.capitalize %></p>
 
-  <%= form_tag conversations_path, method: :post do %>
-    <div>
-      <span class="hidden"><%= text_field_tag :user_name, nil, value: @user.user_name %></span>
-      <span><%= text_field_tag :subject, nil, placeholder: "subject", class: "subject" %></span>
-    </div>
+    <%= form_tag conversations_path, method: :post do %>
+      <div>
+        <span class="hidden"><%= text_field_tag :user_name, nil, value: @user.user_name %></span>
+        <span><%= text_field_tag :subject, nil, placeholder: "subject", class: "subject" %></span>
+      </div>
 
-    <div>
-      <%= text_area_tag :body, nil, placeholder: "message", class: "message-body" %>
-    </div>
+      <div>
+        <%= text_area_tag :body, nil, placeholder: "message", class: "message-body" %>
+      </div>
 
-    <%= submit_tag %>
-
-  <% end %>
-</div>
+      <%= submit_tag %>
+    <% end %>
+  </div>
+<% end %>
