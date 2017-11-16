@@ -72,7 +72,7 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status, :image)
+		params.require(:post).permit(:zip_code, :city, :title, :description, :price, :negotiable, :category_id, :status, :image)
 	end
 
 	def search_params
