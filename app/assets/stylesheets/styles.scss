@@ -8,11 +8,12 @@ body {
 
 .left-body-column {
     float: left;
-    width: 25%;
+    width: 27%;
     height: 100%;
-    padding: 10px;
+    // padding: 10px;
     position: fixed;
-    margin-left: 10px;
+    margin-left: 40px;
+    margin-top: 20px;
     background-image: url("faltest2.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -20,17 +21,20 @@ body {
 
 .right-body-column {
     float: right;
-    width: 72%;
+    width: 70%;
     padding: 10px;
+    margin-top: 9px;
 }
 
 .nav {
     list-style-type: none;
-    margin: 0;
+    margin-right: 10px;
+    margin-top: -5px;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-    width: 103%;
+    background-color: #444444;
+    width: 101%;
+    opacity: 0.8;
 }
 
 .nav-li {
@@ -51,21 +55,38 @@ body {
 
 .search-bar {
     width: 100%;
-    margin-top: 220px;
+    margin-top: 262px;
 }
 
 .search-style {
-    width: 103%;
+    width: 100%;
+}
+
+.input-lg {
+    height: 50px;
+}
+
+.btn {
+    color: black;
+    border-radius: 0;
+    height: 50px;
+    opacity: 0.8;
+}
+
+.btn:hover {
+    color: #FFFFFF;
+    background-color: #777777;
 }
 
 .dropbtn {
-    background-color: #66EE99;
+    background-color: #66FFAA   ;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 103%;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .dropdown {
@@ -106,6 +127,6 @@ body {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #66FF99;
-    color: #444444
+    background-color: #66EEAA;
+    color: #FFFFFF
 }
