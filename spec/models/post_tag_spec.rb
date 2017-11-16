@@ -42,7 +42,7 @@ describe PostTag do
 
     it "belongs to a post" do 
       expect(post_tag.post).to eq post
-    end 
+    end  
   end
 
   describe "uniqueness" do
