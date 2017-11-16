@@ -6,8 +6,7 @@
 <% end %>
 
 <!-- User information -->
-<p>Average rating: <%= @user.average_rating %>/5</p>
-<div class="user-bio">
+
   <p class="underline">About <%= @user.user_name.capitalize %></p>
   <p> <%= @user.bio %></p>
 </div>
@@ -26,7 +25,7 @@
   <table style="width:100%">
     <tr>
       <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
-      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th> 
+      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th>
     </tr>
     <tr>
        <%@user.received_loaner_reviews.each do |review| %>
@@ -40,7 +39,7 @@
           <p><%= review.body %></p>
           <p><%= review.rating %>/5</p>
        </td>
-       <%end %>  
+       <%end %>
     </tr>
   </table>
 </div>
@@ -65,7 +64,7 @@
           <%= form.submit %>
         </div>
       <% end %>
-    </div>    
+    </div>
   </div>
   <div class="col">
     <!-- user as a borrower -->
