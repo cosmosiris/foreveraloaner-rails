@@ -11,7 +11,7 @@
 	<ul>
 		<li><%= image_tag post.image.url(:thumb) %></li>
 		<li><%= link_to post.title, post_path(post) %>, <%=post.price %> </li>
-		<li><%= <%=post.city %> </li>
+		<li><%= post.city %> </li>
 		<p><%= post.description%></p>
 		<% post.tags.each do |tag| %>
 			<span><%= tag.name %></span>
