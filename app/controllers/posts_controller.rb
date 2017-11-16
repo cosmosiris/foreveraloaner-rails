@@ -32,6 +32,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@tag = Tag.new
+		@transaction = Transaction.new
 	end
 
 	def edit

@@ -6,11 +6,17 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+    @post = Post.find(params[:transaction][:post_id])
+    p "*" * 100
+    p params
+    p @transaction
 
     if @transaction.save
       redirect_to post_path(@post)
     else
       @errors = @transaction.errors.full_messages
+      p @errors
+      redirect_to post_path(@post)
     end
   end
 
@@ -33,6 +39,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:duration, :final_price, :borrower, :post)
+    params.require(:transaction).permit(:duration, :final_price, :borrower_id, :post_id)
   end
 end
