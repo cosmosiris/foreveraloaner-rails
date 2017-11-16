@@ -12,6 +12,8 @@ class ReviewsController < ApplicationController
   def create
     @reviewee = User.find_by(id: params[:review][:reviewee_id])
     @review = Review.new(review_params)
+    p params
+    p "*" * 100
     if @review.save
       redirect_to user_path(@reviewee)
     else
