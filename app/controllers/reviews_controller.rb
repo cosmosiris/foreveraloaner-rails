@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @reviewee = User.find(params[:user_id])
+    @reviewee = User.find_by(id: params[:review][:reviewee_id])
     @review = Review.new(review_params)
     if @review.save
       redirect_to user_path(@reviewee)

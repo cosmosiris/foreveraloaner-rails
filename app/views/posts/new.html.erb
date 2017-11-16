@@ -1,9 +1,7 @@
-<p id="new-post-header">Create a Post</p>
-
 <%= render 'errors' %>
 
 <div class="post-directions">
-	<p class="center">Please follow the guidelines below:</p>
+	<p class="center">Please follow the guidelines below for creating a post</p>
 	<ul class="post-directions-list">
 		<li class="directions-list">Title should mention the items you are listing</li>
 		<li class="directions-list">Use the description to explain what type of agreement you are looking for and the condition of the items you are listing</li>
@@ -39,7 +37,11 @@
 	</div>
 	<div>
 		<%= f.label "Zip Code", class: "zip-text" %>
-		<%= f.text_field :location, class: "zip-box" %>
+		<%= f.text_field :zip_code, class: "zip-box" %>
+	</div>
+	<div>
+		<%= f.label "City", class: "zip-text" %>
+		<%= f.text_field :city, class: "zip-box" %>
 	</div>
 	<div>
 		<%= f.label "Is the price negotiable?", class: "negotiate-text" %>

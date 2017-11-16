@@ -1,8 +1,17 @@
-<h1>Meet <%= @user.user_name %></h1>
-<p>Average rating: <%= @user.average_rating %></p>
-<p>A little bit about me:</p>
-<p> <%= @user.bio %></p>
-<h3>Things you can borrow from <%= @user.user_name %>:</h3>
+<!-- heading -->
+
+<h1 class="profile-heading">Meet <%= @user.user_name %></h1>
+<% if @user == current_user %>
+  <span class="edit-profile-btn"><%= link_to 'Edit Profile', edit_user_registration_path(@user) %></span>
+<% end %>
+
+<!-- User information -->
+<p>Average rating: <%= @user.average_rating %>/5</p>
+<div class="user-bio">
+  <p class="underline">About <%= @user.user_name.capitalize %></p>
+  <p> <%= @user.bio %></p>
+</div>
+<p class="underline"><%= @user.user_name.capitalize %>'s Postings</p>
 <ul>
   <% @user.posts.each do |post| %>
     <% if post.status == "open" %>
@@ -11,68 +20,91 @@
   <% end %>
 </ul>
 
-<h3><%= @user.user_name %> as a loaner</h3>
-<p>Leave a review for <%=@user.user_name.capitalize%> as a loaner</p>
-<%= form_for([current_user, @review]) do |form| %>
-  <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
-  <%= form.hidden_field :role, :value=> "borrower" %>
-  <%= form.hidden_field :reviewee_id, :value=> @user.id %>
+<!-- User's reviews -->
+<div class="users-review-box">
+  <p>Reviews of <%= @user.user_name.capitalize %></p>
+  <table style="width:100%">
+    <tr>
+      <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
+      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th> 
+    </tr>
+    <tr>
+       <%@user.received_loaner_reviews.each do |review| %>
+       <td class="rvw-col-border">
+          <p><%= review.body %></p>
+          <p><%= review.rating %>/5</p>
+       </td>
+       <%end %>
+       <%@user.received_borrower_reviews.each do |review| %>
+       <td class="rvw-col-border">
+          <p><%= review.body %></p>
+          <p><%= review.rating %>/5</p>
+       </td>
+       <%end %>  
+    </tr>
+  </table>
+</div>
 
-  <%= form.label :rating %>
-  <%= form.select :rating, [1, 2, 3, 4, 5] %><br>
+<!-- leave a review -->
+<p>Leave a review of</p>
+<div class="row review-box">
+  <div class="col">
+    <!-- User as a loaner -->
+    <div class="leave-review-box">
+      <p class="center"><%= @user.user_name.capitalize %> as a loaner</p>
+      <%= form_for([current_user, @review]) do |form| %>
+        <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
+        <%= form.hidden_field :role, :value=> "borrower" %>
+        <%= form.hidden_field :reviewee_id, :value=> @user.id %>
 
-  <%= form.label :body %>
-  <%= form.text_area :body %><br>
+        <%= form.text_area :body, class: "review-body", placeholder: "message" %><br>
 
-  <%= form.submit %>
-<% end %>
+        <div class="submit-review">
+          <%= form.label :rating %>
+          <%= form.select :rating, [1, 2, 3, 4, 5] %>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>    
+  </div>
+  <div class="col">
+    <!-- user as a borrower -->
+    <div class="leave-review-box">
+      <p class="center"><%= @user.user_name.capitalize %> as a borrower</p>
+      <%= form_for([current_user, @review]) do |form| %>
+        <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
+        <%= form.hidden_field :role, :value=> "loaner" %>
+        <%= form.hidden_field :reviewee_id, :value=> @user.id %>
 
-  <ul>
-    <% @user.received_loaner_reviews.each do |review| %>
-      <li><%= review.rating %></li>
-        <%= review.body %>
-    <% end %>
-  </ul>
+        <%= form.text_area :body, class: "review-body", placeholder: "message" %><br>
 
-<h3><%= @user.user_name %> as a borrower</h3>
-<p>Leave a review for <%=@user.user_name.capitalize%> as a borrower</p>
-<%= form_for([current_user, @review]) do |form| %>
-  <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
-  <%= form.hidden_field :role, :value=> "loaner" %>
-  <%= form.hidden_field :reviewee_id, :value=> @user.id %>
+        <div class="submit-review">
+          <%= form.label :rating %>
+          <%= form.select :rating, [1, 2, 3, 4, 5] %>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <%= form.label :rating %>
-  <%= form.select :rating, [1, 2, 3, 4, 5] %><br>
 
-  <%= form.label :body %>
-  <%= form.text_area :body %><br>
-
-  <%= form.submit %>
-<% end %>
-  <ul>
-    <% @user.received_borrower_reviews.each do |review| %>
-      <li><%= review.rating %></li>
-        <%= review.body %>
-    <% end %>
-  </ul>
-
+<!-- private messaging -->
 <% if @user != current_user %>
-  <h1>New Conversation With <%= @user.user_name %></h1>
+  <div class="messaging-box">
+    <p>Send a Private Message to <%= @user.user_name.capitalize %></p>
 
-  <%= form_tag conversations_path, method: :post do %>
-    <div>
-      <%= text_field_tag :user_name, nil, value: @user.user_name %>
-    </div>
+    <%= form_tag conversations_path, method: :post do %>
+      <div>
+        <span class="hidden"><%= text_field_tag :user_name, nil, value: @user.user_name %></span>
+        <span><%= text_field_tag :subject, nil, placeholder: "subject", class: "subject" %></span>
+      </div>
 
-    <div>
-      <%= text_field_tag :subject, nil, placeholder: "subject" %>
-    </div>
+      <div>
+        <%= text_area_tag :body, nil, placeholder: "message", class: "message-body" %>
+      </div>
 
-    <div>
-      <%= text_area_tag :body, nil, placeholder: "message" %>
-    </div>
-
-    <%= submit_tag %>
-
-  <% end %>
+      <%= submit_tag %>
+    <% end %>
+  </div>
 <% end %>
