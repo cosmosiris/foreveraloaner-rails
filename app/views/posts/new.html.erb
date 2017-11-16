@@ -18,16 +18,16 @@
 	</ul>
 </div>
 
-<%= form_for @post, url: {action: "create"}, html: {class: "post-form", multipart: true} do |f| %>
+<%= form_for @post, url: {action: "create"}, html: {class: "post-form", multipart: true}, class: 'new-post-form' do |f| %>
 
 	<div>
-		<%= f.text_field :title, class: "title-input", placeholder: "Title"%>
+		<%= f.text_field :title, class: "title-input title-height", placeholder: "Title"%>
 	</div>
 	<div>
-		<%= f.text_area :description, class: "desc-input", placeholder: "Description"%>
+		<%= f.text_area :description, class: "desc-input new-post-text", placeholder: "Description"%>
 	</div>
 	<div>
-		<%= f.label "Select a Category"%>
+		<%= f.label "Select a Category", class: "cat-style" %>
 		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name')%>
 	</div>
 	<div>
