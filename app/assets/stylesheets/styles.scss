@@ -38,15 +38,18 @@ body {
 }
 
 .nav-li {
-    float: left;
+    float: center;
+    margin-left: 16px;
 }
 
 .nav-li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 12px;
     text-decoration: none;
+    // margin-right: px;
+    // letter-spacing: 3px;
 }
 
 .nav-li a:hover {
@@ -71,6 +74,7 @@ body {
     border-radius: 0;
     height: 50px;
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .btn:hover {
