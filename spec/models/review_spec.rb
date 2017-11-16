@@ -33,12 +33,6 @@ let(:review) { Review.create(rating: "4",
                              reviewee: bob,
                              role: "borrower")}
 
-
-  # context "when input is valid" do
-  #   it "creates a new review in the database if the author borrowed an item from the loaner" do 
-  #     expect(review).to be_valid
-  #   end
-  # end
   describe "has basic attributes" do
     it "has a rating" do 
       expect(review.rating).to eq 4
