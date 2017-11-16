@@ -29,7 +29,7 @@ describe User do
 
     it "has a last name" do
       expect(bob.last_name).to eq "Vance"
-    end 
+    end  
 
     it "has a bio" do
       expect(bob.bio).to eq "A fungi"
