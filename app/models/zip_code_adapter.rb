@@ -31,6 +31,6 @@ module ZipCodeAdapter
 
     # zips.zip(cities)
 
-    zipw
+    zip
   end
 end
