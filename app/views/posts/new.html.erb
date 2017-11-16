@@ -28,11 +28,11 @@
 	</div>
 	<div>
 		<%= f.label "Select a Category", class: "category-text" %>
-		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name'), class: "category-select" %>
+		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name'), {}, { class: "category-select" } %>
 	</div>
 	<div>
 		<%= f.label "Price", class: "price-text" %>
- 		<%= f.text_field :price,  class: "price-input price-box", placeholder: "$" %>
+ 		<%= f.text_field :price,  class: "price-input price-box", placeholder: "Ex: $5 a day" %>
 	</div>
 	<div>
 		<%= f.label "Zip Code", class: "zip-text" %>
@@ -40,11 +40,14 @@
 	</div>
 	<div>
 		<%= f.label "Is the price negotiable?", class: "negotiate-text" %>
-		<%= f.select :negotiable, [["yes", true], ["no", false]] %>
+		<%= f.select :negotiable, [["yes", true], ["no", false]], {}, { class: "negotiable-select" } %>
 	</div>
 	<div>
 		<%= f.label "Image", class: "image-text" %>
-		<%= f.file_field :image, class: "image-button" %>
+		<span class="btn btn-md btn-primary btn-file">
+			Upload
+			<%= f.file_field :image %>
+		</span>
 	</div>
   	<%= f.submit "Create", class: "create-button" %>
 <% end %>
