@@ -3,11 +3,17 @@ class PostsController < ApplicationController
 
 	def index
 		search = params[:search]
-    if search
-      @posts = Post.search(search)
-    else
-			@posts = Post.all
-    end
+	    if search
+	    	zip_codes = ZipCodeAdapter.zip_search(params[:zip_code], params[:distance])
+	      p "*" * 100
+	      p params[:search]
+	    	p params[:zip_code]
+	    	p params[:distance]
+	      @posts = Post.in_zips(zip_codes).search(search)
+	      p @posts
+	    else
+				@posts = Post.all
+	    end
 	end
 
 	def new
@@ -16,10 +22,12 @@ class PostsController < ApplicationController
 	end
 
 	def create
+		@categories = Category.all
 		@post = current_user.posts.new(post_params)
 
+
 		if @post.save
-			redirect_to post_path(@post)
+			redirect_to post_path(@post), notice: "Post was successfully created"
 		else
 			@errors = @post.errors.full_messages
 			render :new, status: 422
@@ -33,14 +41,17 @@ class PostsController < ApplicationController
 
 	def edit
 		@post = Post.find(params[:id])
+		@categories = Category.all
 	end
 
 	def update
+		p post_params
+		@categories = Category.all
 		@post = Post.find(params[:id])
 		@post.update_attributes(post_params)
 
 		if @post.save
-			redirect_to post_path(@post)
+			redirect_to post_path(@post), notice: "Post was successfully updated"
 		else
 			@errors = @post.errors.full_messages
 			render :edit
@@ -50,9 +61,8 @@ class PostsController < ApplicationController
 
 	def destroy
 		@post = Post.find(params[:id])
-		@category = @post.category_id
 		@post.destroy
-		redirect_to posts_path
+		redirect_to categories_path, notice: "Post was successfully destroyed"
 	end
 
 	def search
@@ -61,7 +71,7 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id)
+		params.require(:post).permit(:location, :title, :description, :price, :negotiable, :category_id, :status, :image)
 	end
 
 

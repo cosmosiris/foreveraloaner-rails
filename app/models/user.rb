@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attr_accessor :username
 
+  has_many :reviews, foreign_key: :reviewee_id
+
   # reviews written as the loaner
   has_many :written_loaner_reviews, -> { where(role: "loaner") }, class_name: "Review", foreign_key: :reviewer_id
   has_many :reviewed_borrowers, through: :written_loaner_reviews, source: :reviewee
@@ -45,4 +47,18 @@ class User < ApplicationRecord
   def mailboxer_email(object)
     nil
   end
+
+
+  def average_rating
+    total = 0
+    self.reviews.each do |review|
+      total += review.rating
+    end
+    if self.reviews.length == 0
+      return total / 1
+    else
+      return total / self.reviews.length
+    end
+  end
+
 end

@@ -11,4 +11,5 @@ class Review < ApplicationRecord
       errors.add(:reviewee, "Cannot review someone you have not loaned anything to") unless self.reviewer.users_loaned_to.include?(self.reviewee)
     end
   end
+
 end
