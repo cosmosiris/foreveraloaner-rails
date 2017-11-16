@@ -5,12 +5,7 @@ class PostsController < ApplicationController
 		search = params[:search]
 	    if search
 	    	zip_codes = ZipCodeAdapter.zip_search(params[:zip_code], params[:distance])
-	      p "*" * 100
-	      p params[:search]
-	    	p params[:zip_code]
-	    	p params[:distance]
 	      @posts = Post.in_zips(zip_codes).search(search)
-	      p @posts
 	    else
 				@posts = Post.all
 	    end
@@ -37,6 +32,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@tag = Tag.new
+		@transaction = Transaction.new
 	end
 
 	def edit
