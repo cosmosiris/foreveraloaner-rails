@@ -1,40 +1,49 @@
-<h1>Post Show</h1>
-
 <div>
-	<p>Title: <%= @post.title %></p>
+	<p class="post-title"><%= @post.title %></p>
 
 	<%= image_tag @post.image.url(:medium) %>
 
-	<p>Description: <%= @post.description %></p>
+	<p class="post-description"><%= @post.description %></p>
 
-	<p>Price: <%= @post.price %></p>
-
-	<p>Status: <%= @post.status %></p>
-
+	<table style="width:100%">
+	  <tr>
+	    <th class="table-headers">Price</th>
+	    <th class="table-headers">Status</th> 
+	    <th class="table-headers">Negotiable?</th>
+	    <th class="table-headers">Author</th>
+	  </tr>
+	  <tr>
+	    <td><%= @post.price %></td>
+	    <td><%= @post.status %></td> 
 	<% if @post.negotiable %>
-		<p>Negotiable?: yes</p>
+		<td>yes</td>
 	<% else %>
-		<p>Negotiable?: no</p>
+		<td>no</td>
 	<% end %>
+		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
+	  </tr>
+	</table>
 
-	<p>Author: <%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></p>
+
 
 	<% if @post.loaner == current_user %>
-		<p>Tags:</p>
-		<% @post.tags.each do |tag| %>
-			<span><%= link_to "x", post_tag_path(tag, post_id: @post.id), method: "DELETE" %><%= tag.name %></span>
-		<% end %>
+		<div class="tag-box">
+			<% @post.tags.each do |tag| %>
+				<span class="single-tag-box"><%= link_to "x ", post_tag_path(tag, post_id: @post.id), method: "DELETE" %><%= tag.name %></span>
+			<% end %>
+		</div>
 	<% else%>
-		<p>Tags:</p>
-		<% @post.tags.each do |tag| %>
-			<span><%= tag.name %></span>
-		<% end %>
+		<div class="tag-box">
+			<% @post.tags.each do |tag| %>
+				<span class="single-tag-box"><%= tag.name %></span>
+			<% end %>
+		</div>
 	<% end %>
 
 </div>
 
 <% if @post.loaner == current_user %>
-	<div>
+	<div class="add-tags-box">
 		<p>Add Tags To Your Post</p>
 
 		<%= form_for @tag, as: :tag, url: tags_path, html: {id: "tag_form" } do |f| %>
@@ -42,12 +51,12 @@
 				<%= f.label "Tag Name" %>
 				<%= f.text_field :name %>
 				<%= f.hidden_field :post_id, value: @post.id %>
-			</div>
 		  		<%= f.submit "Create" %>
+			</div>
 		<% end %>
 	</div>
 	<div>
-		<p><%= link_to "Edit Post", edit_post_path(@post)%></p>
-		<p><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></p>
+		<p><span class="edit-btn"><%= link_to "Edit Post", edit_post_path(@post)%></span>
+		<span class="delete-btn"><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></span></p>
 	</div>
 <% end %>
