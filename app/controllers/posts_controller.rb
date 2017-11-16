@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 		if params[:zip_code].length > 0
 			params[:distance] = 10 if params[:distance].blank?
 	    	zip_codes = ZipCodeAdapter.zip_search(params[:zip_code], params[:distance])
-
 			@posts = @posts.in_zips(zip_codes)
 		end
 
@@ -39,6 +38,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@tag = Tag.new
+		@transaction = Transaction.new
 	end
 
 	def edit
