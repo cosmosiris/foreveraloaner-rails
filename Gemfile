@@ -40,7 +40,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -52,6 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 #login, logout, user authentication
