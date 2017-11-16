@@ -27,4 +27,3 @@ Post.create!(title: "18 inch 40.2cc Gas Chainsaw", description: "Professional-gr
 
 
 
-

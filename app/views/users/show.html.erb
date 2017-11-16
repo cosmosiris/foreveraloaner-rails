@@ -7,6 +7,10 @@
 
 <!-- User information -->
 
+<p>Average Borrower rating: <%= @user.average_borrower_rating %>/5</p>
+<p>Average Loaner rating: <%= @user.average_loaner_rating %>/5</p>
+<div class="user-bio">
+
   <p class="underline">About <%= @user.user_name.capitalize %></p>
   <p> <%= @user.bio %></p>
 </div>
@@ -50,7 +54,7 @@
   <div class="col">
     <!-- User as a loaner -->
     <div class="leave-review-box">
-      <p class="center"><%= @user.user_name.capitalize %> as a loaner</p>
+      <p class="rev-center"><%= @user.user_name.capitalize %> as a loaner</p>
       <%= form_for([current_user, @review]) do |form| %>
         <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
         <%= form.hidden_field :role, :value=> "borrower" %>
@@ -69,7 +73,7 @@
   <div class="col">
     <!-- user as a borrower -->
     <div class="leave-review-box">
-      <p class="center"><%= @user.user_name.capitalize %> as a borrower</p>
+      <p class="rev-center"><%= @user.user_name.capitalize %> as a borrower</p>
       <%= form_for([current_user, @review]) do |form| %>
         <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
         <%= form.hidden_field :role, :value=> "loaner" %>
