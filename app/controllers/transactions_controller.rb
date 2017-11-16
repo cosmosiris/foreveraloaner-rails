@@ -6,7 +6,6 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    @post = Post.find(params[:post_id])
 
     if @transaction.save
       redirect_to post_path(@post)
@@ -18,12 +17,10 @@ class TransactionsController < ApplicationController
 
   def edit
     @transaction = Transaction.new(transaction_params)
-    @post = Post.find(params[:post_id])
   end
 
   def update
     @transaction = Transaction.find(:id)
-    @post = Post.find(params[:post_id])
     @transaction.update_attributes(transaction_params)
 
     if @transaction.save

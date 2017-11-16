@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    #messages 
+    #messages
     resources :conversations do
       resources :messages
     end
@@ -14,17 +14,17 @@ Rails.application.routes.draw do
     end
 
     #posts & resource tags
-    resources :posts do
-      resources :transactions
-    end
 
-    #tags 
+    resources :transactions
+
+
+    #tags
     resources :tags, only: [:create]
-    
+
     #post tags
     resources :post_tags, only: [:create, :destroy]
 
-    #categories 
+    #categories
     resources :categories, only: [:index, :show] do
       resources :posts, only: [:index, :show]
     end

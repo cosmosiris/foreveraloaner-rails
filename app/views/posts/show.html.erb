@@ -51,3 +51,24 @@
 		<p><%= link_to "Delete Post", post_path(@post), method: "DELETE"%></p>
 	</div>
 <% end %>
+
+<%= form_for @transaction, url: transactions_path do |f| %>
+	<div>
+		<%= f.label "Make an Offer" %>
+		<%= f.hidden_field :borrower, :value=> current_user.id %>
+		<%= f.hidden_field :post, :value=> @post.id %>
+		<%= f.text_field :duration %>
+		<%= f.text_field :final_price %>
+	</div>
+		<%= f.submit "Borrow" %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
