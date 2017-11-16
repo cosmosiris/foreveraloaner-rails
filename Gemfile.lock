@@ -263,6 +263,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap (~> 4.0.0.beta2.1)
+  bundler (~> 1.16.0)
   byebug
   devise
   dotenv-rails
