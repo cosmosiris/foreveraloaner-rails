@@ -2,7 +2,7 @@
 
 <%= render 'errors' %>
 
-<%= form_for @post, url: {action: "create"}, html: {class: "post_form"} do |f| %>
+<%= form_for @post, url: {action: "create"}, html: {class: "post_form", multipart: true} do |f| %>
 
 	<div>
 		<%= f.label "Title" %>
@@ -31,6 +31,10 @@
 	<div>
 		<%= f.label "Select a Category"%>
 		<%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name')%>
+	</div>
+	<div>
+		<%= f.label "Image" %>
+		<%= f.file_field :image %>
 	</div>
   	<%= f.submit "Create" %>
 <% end %>
