@@ -1,0 +1,13 @@
+<h1>Search Results</h1>
+
+<% @posts.each do |post| %>
+  <ul>
+  	<li><%= image_tag post.image.url(:thumb) %></li>
+    <li><%= link_to post.title, post_path(post) %>, $<%=post.price %> </li>
+    <p><%= post.description%></p>
+
+    <% post.tags.each do |tag| %>
+      <span><%= tag.name %></span>
+    <% end %>
+  </ul>
+<% end %>
