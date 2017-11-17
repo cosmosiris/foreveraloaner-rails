@@ -12,5 +12,8 @@
     <%= text_area_tag :body %>
   </div>
 
-  <%= submit_tag %>
+  <%= submit_tag 'Send Message' %>
+
 <% end %>
+
+<%= link_to 'Delete', conversation_path(@conversation), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -17,6 +17,7 @@
                 <li class="nav-li"><%= link_to "Logout", destroy_user_session_path, method: "DELETE" %></li>
                 <li class="nav-li"> <%= link_to "My Profile", user_path(current_user)  %></li>
                 <li class="nav-li"><%= link_to "Create a Post", new_post_path  %></li>
+                <li class="nav-li"><%= link_to "Chats", conversations_path %></li>
             <% else %>
                 <li class="nav-li"><%= link_to "Login", new_user_session_path %></li>
                 <li class="nav-li"><%= link_to "Register", new_user_registration_path  %></li>
