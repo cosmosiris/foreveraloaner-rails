@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 			redirect_to post_path(@post), notice: "Post was successfully created"
 		else
 			@errors = @post.errors.full_messages
-			render :new, status: 422
+			render :new
 		end
 	end
 
