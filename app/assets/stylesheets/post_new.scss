@@ -240,18 +240,18 @@
 
 .form-group-attr {
   float: left;
+  display: inline-block;
 }
 
 .attr-text {
   // float: left;
-  // display: inline;
+  // display: inline-block;
 }
 
 .attr-input {
-  // float: left;
-  // margin-left: 300px;
-  // display: inline;
-
+  float: left;
+  margin-left: 300px;
+  // display: inline-block;
 }
 
 
