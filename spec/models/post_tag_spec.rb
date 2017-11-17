@@ -9,15 +9,17 @@ describe PostTag do
                           user_name: "BobVance",
                           email:"bob@vancerefrigeration.com",
                           password: "bobvance" )} 
-  let(:post) { Post.create(title: "Idk",
-                             description: "Hello",
-                             price: 500,
-                             location: "Dunder Mifflin",
-                             negotiable: true,
-                             category: category,
-                             loaner: bob )} 
-    let(:tag) { Tag.create( name: "paper")}
-    let(:post_tag) { PostTag.create(tag: tag , post: post )}
+  let(:post) { Post.create(title: "Refrigerator",
+                           description: "portable",
+                           price: "$20/week",
+                           status: "open",
+                           zip_code: "18503",
+                           city: "Scranton",
+                           negotiable: true,
+                           category: category,
+                           loaner: bob )}
+  let(:tag) { Tag.create( name: "mini-fridge")}
+  let(:post_tag) { PostTag.create(tag: tag , post: post )}
   
   context "when input is valid" do
     it "creats a new tag for a post in the database" do
