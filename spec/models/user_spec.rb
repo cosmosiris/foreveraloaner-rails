@@ -78,8 +78,6 @@ describe User do
       bob.password = nil
       expect(bob). to be_invalid
     end
-
-
   end 
 
   describe "associations" do
