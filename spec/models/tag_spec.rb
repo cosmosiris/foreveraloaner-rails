@@ -48,8 +48,6 @@ describe Tag do
                          user_name: "BobVance",
                          email:"robert@vancerefrigeration.com",
                          password: "bobvance")
-      p "*" * 50
-      p @bob.errors.full_messages
 
       @category = Category.create(name: "Garden")
 

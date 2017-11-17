@@ -2,25 +2,25 @@ require 'rails_helper'
 
 describe User do
   let(:bob) { User.create(first_name: "Robert", 
-                          last_name: "Vance",
-                          bio: "A fungi",
-                          phone_number: "888-888-8888",
-                          user_name: "BobVance",
-                          email:"bob@vancerefrigeration.com",
-                          password: "bobvance" )}
+                            last_name: "Vance",
+                            bio: "A fungi",
+                            phone_number: "888-888-8888",
+                            user_name: "BobVance",
+                            email:"bob@fridge.com",
+                            password: "bobvance" )}
   let(:phyllis) { User.create(first_name: "Phyllis",
                               last_name: "Lapin", 
                               bio: "Close your mouth honey, you look like a trout", 
                               phone_number: "111-111-1111",
                               user_name: "EasyRider",
-                              email:"mothergoose@dundermifflin.com",
+                              email:"lapin@dundermifflin.com",
                               password: "phallice" )}
 
   context "when input is valid" do
     it "creates a new user in the database" do 
       expect(bob).to be_valid
     end 
-  end 
+  end
 
   describe "has basic attributes" do 
     it "has a first name" do
@@ -44,14 +44,13 @@ describe User do
     end
 
     it "has an email" do 
-      expect(bob.email). to eq "bob@vancerefrigeration.com"
+      expect(bob.email). to eq "bob@fridge.com"
     end
 
     it "has a password" do 
       expect(bob.password).to eq "bobvance"
     end 
-  
-  end 
+  end
 
   describe "validations" do 
     it "is invalid without a first name" do 
@@ -78,18 +77,20 @@ describe User do
       bob.password = nil
       expect(bob). to be_invalid
     end
-  end 
+  end
 
   describe "associations" do
     before(:each) do
       @category = Category.create(name: "Recreational") 
-      @post = Post.create(title: "Idk",
-                          description: "Hello",
-                          price: 500,
-                          location: "Dunder Mifflin",
+      @post = Post.create(title: "Refrigerator",
+                          description: "portable",
+                          price: "$20/week",
+                          status: "open",
+                          zip_code: "18503",
+                          city: "Scranton",
                           negotiable: true,
                           category: @category,
-                          loaner: bob )
+                          loaner: bob)
       @transaction = Transaction.create(borrower: phyllis,
                                         post: @post,
                                         duration: "2 days",
@@ -114,11 +115,9 @@ describe User do
                                             reviewer: phyllis,
                                             reviewee: bob,
                                             role:"borrower")
-
-    end 
+    end
 
     context "loaning items" do  
-
       it "can list an item for borrow" do 
         expect(bob.posts).to include(@post)
       end
@@ -133,7 +132,6 @@ describe User do
     end 
 
     context "borrowing items" do 
-
       it "can borrow an item" do 
         expect(phyllis.borrowed_posts).to include(@post)
       end 
@@ -147,8 +145,7 @@ describe User do
       end
     end 
 
-    context "reviewing borrowers" do
-      
+    context "reviewing borrowers" do    
       it "can write reviews for people they lend items to" do
         expect(bob.written_loaner_reviews).to include(@borrower_review)
       end
@@ -167,7 +164,6 @@ describe User do
     end
 
     context "reviewing loaners" do
-
       it "can write reviews for people they borrow items from" do
         expect(phyllis.written_borrower_reviews).to include(@loaner_review)
       end
@@ -186,24 +182,21 @@ describe User do
     end
 
     context "User#name" do
-      
       it "is combines the user's first and last name" do
         expect(bob.name).to eq "Robert Vance"
       end
     end
 
-    # context "User#rating" do
+    context "User#loaner_rating" do
+      it "averages the user's rating as a loaner" do
+        expect(bob.loaner_rating).to eq 4
+      end
+    end
 
-    #   it "averages the ratings of the user as a borrower" do
-    #     p "*" * 100
-    #     p phyllis.received_borrower_reviews
-    #     p phyllis.received_borrower_reviews.rating
-    #     expect(phyllis.average_borrower_rating).to eq 3 
-    #   end
-
-    #   it "averages the ratings of the user as a loaner" do
-    #     expect(bob.average_loaner_rating).to eq 4
-    #   end
-    # end
-  end 
-end
+    context "User#borrower_rating" do
+      it "averages the user's ratings as borrower" do
+        expect(phyllis.borrower_rating).to eq 3
+      end
+    end
+  end
+end 
