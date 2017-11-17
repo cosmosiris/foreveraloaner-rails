@@ -8,4 +8,132 @@
 @import "session_new";
 
 
+body {
+  margin: 0px;
+}
+
+.left-body-column {
+    float: left;
+    width: 27%;
+    height: 100%;
+    position: fixed;
+    margin-left: 40px;
+    margin-top: 20px;
+    background-image: url("/fallonglogo.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+.right-body-column {
+    float: right;
+    width: 70%;
+    padding: 10px;
+    margin-top: 9px;
+}
+
+.nav {
+    list-style-type: none;
+    margin-right: 10px;
+    margin-top: -5px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #444444;
+    width: 101%;
+    opacity: 0.8;
+}
+
+.nav-li {
+    float: center;
+    margin-left: 16px;
+}
+
+.nav-li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 12px;
+    text-decoration: none;
+}
+
+.nav-li a:hover {
+    background-color: #111;
+}
+
+.search-bar {
+    width: 100%;
+    margin-top: 250px;
+}
+
+.search-style {
+    width: 100%;
+}
+
+.input-lg {
+    height: 50px;
+    outline: 0px;
+}
+
+.btn {
+    color: black;
+    border-radius: 0;
+    height: 50px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #FFFFFF;
+    background-color: #777777;
+}
+
+.dropbtn {
+    background-color: #66FFAA   ;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 100%;
+}
+
+.menu-scroll {
+   max-height:400px;
+   overflow-y:scroll;
+   width: 100%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #66EEAA;
+    color: #FFFFFF
+}
 
