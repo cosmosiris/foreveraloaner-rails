@@ -18,6 +18,21 @@ party_supplies = Category.create(name: "Party Supplies")
 categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", "Business & Office Supplies", "Clothing", "DIY Supplies", "Electronics", "Fitness & Sporting Equipment", "Furniture", "Games", "Household Items & Appliances", "Kitchen Appliances", "Luggage & Travel Accessories", "Miscellaneous", "Musical Instruments", "Outdoor Equipment", "Tools", "Trailers", "Vehicle & Automotive Parts", "VHS & DVD" ]
 
 categories.map! { |category| Category.create(name: category) }
+  categories.each do |category|
+    10.times do
+      post_details = {
+        title: Faker::Commerce.product_name,
+        description: Faker::HarryPotter.quote,
+        price: Faker::Number.decimal(2),
+        status: "open",
+        zip_code: 98116,
+        city: "Seattle",
+        negotiable: "true",
+        loaner: second_user
+      }
+      category.posts.create!(post_details)
+    end
+end
 
 garden = Tag.create!(name: "garden")
 tools = Tag.create!(name: "tools")
