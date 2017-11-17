@@ -3,11 +3,12 @@ require 'rails_helper'
 describe Review do
   let(:bob) { User.create(first_name: "Robert", 
                           last_name: "Vance",
-                          bio: "A fungi",
+                          bio: "Bob Vance, of Vance Refrigeration",
                           phone_number: "888-888-8888",
                           user_name: "BobVance",
                           email:"bob@vancerefrigeration.com",
                           password: "bobvance" )}
+
   let(:phyllis) { User.create(first_name: "Phyllis",
                               last_name: "Lapin", 
                               bio: "Close your mouth honey, you look like a trout", 
@@ -15,23 +16,27 @@ describe Review do
                               user_name: "EasyRider",
                               email:"mothergoose@dundermifflin.com",
                               password: "phallice" )}
-let(:category) { Category.create(name: "Garden") }
-let(:post) { Post.create(title: "Lawn Mower", 
-                       description: "Mows your grass", 
-                       price: "$40/week", 
-                       status: "open", 
-                       negotiable: true, 
-                       loaner: bob, 
-                       category: category)}
-let(:transaction) { Transaction.create(borrower: phyllis,
-                                       post: post,
-                                       duration: "5 days",
-                                       final_price: 30)}
-let(:review) { Review.create(rating: "4",
-                             body: "a good experience",
-                             reviewer: phyllis,
-                             reviewee: bob,
-                             role: "borrower")}
+
+  let(:category) { Category.create(name: "Garden") }
+
+  let(:post) { Post.create(title: "Lawn Mower", 
+                         description: "Mows your grass", 
+                         price: "$40/week", 
+                         status: "open", 
+                         negotiable: true, 
+                         loaner: bob, 
+                         category: category)}
+
+  let(:transaction) { Transaction.create(borrower: phyllis,
+                                         post: post,
+                                         duration: "5 days",
+                                         final_price: 30)}
+
+  let(:review) { Review.create(rating: "4",
+                               body: "a good experience",
+                               reviewer: phyllis,
+                               reviewee: bob,
+                               role: "borrower")}
 
   describe "has basic attributes" do
     it "has a rating" do 
@@ -67,13 +72,14 @@ let(:review) { Review.create(rating: "4",
 
   describe "validations" do 
     before(:each) do
-          @bob = User.create(first_name: "Robert",
-                          last_name: "Vance",
-                          bio: "A fungi",
-                          phone_number: "888-888-8888",
-                          user_name: "BobVance",
-                          email:"bob@vancerefrigeration.com",
-                          password: "bobvance" )
+    @bob = User.create(first_name: "Robert",
+                    last_name: "Vance",
+                    bio: "Bob Vance, of Vance Refrigeration",
+                    phone_number: "888-888-8888",
+                    user_name: "BobVance",
+                    email:"bob@vancerefrigeration.com",
+                    password: "bobvance" )
+
     @phyllis = User.create(first_name: "Phyllis",
                               last_name: "Lapin",
                               bio: "Close your mouth honey, you look like a trout",
@@ -81,23 +87,30 @@ let(:review) { Review.create(rating: "4",
                               user_name: "EasyRider",
                               email:"mothergoose@dundermifflin.com",
                               password: "phallice" )
+
     @category = Category.create(name: "Garden")
-    @post = Post.create(title: "Lawn Mower",
-                       description: "Mows your grass",
-                       price: "$40/week",
-                       status: "open",
-                       negotiable: true,
-                       loaner: @bob,
-                       category: @category)
+
+    @post = Post.create(title: "Refrigerator",
+                        description: "portable",
+                        price: "$20/week",
+                        status: "open",
+                        zip_code: "18503",
+                        city: "Scranton",
+                        negotiable: true,
+                        category: @category,
+                        loaner: @bob)
+
     @transaction = Transaction.create(borrower: @phyllis,
                                        post: @post,
                                        duration: "5 days",
                                        final_price: 30)
+
     @borrower_review = Review.create(rating: 4,
                              body: "a good experience",
                              reviewer: @phyllis,
                              reviewee: @bob,
                              role: "borrower")
+
     @loaner_review =  Review.create(rating: 5,
                              body: "you're a helluva bowler",
                              reviewer: @bob,
