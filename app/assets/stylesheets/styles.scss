@@ -45,7 +45,8 @@ body {
     display: block;
     color: white;
     text-align: center;
-    padding: 12px 12px;
+    padding: 6px 6px;
+    margin-right: -8px;
     text-decoration: none;
 }
 
@@ -65,6 +66,17 @@ body {
 .input-lg {
     height: 50px;
     outline: 0px;
+}
+
+.search-text {
+    font-style: italic;
+    color: #CCCCCC;
+}
+
+.keyword-box {
+    margin-left: 12px;
+    margin-top: 10px;
+    margin-bottom: 18px;
 }
 
 .btn {
@@ -131,4 +143,25 @@ body {
     color: #FFFFFF
 }
 
+.header-text {
+    font-size: 30px;
+    margin-top: 30px;
+    color: #f67148;
+}
 
+.edit-profile-link {
+    float: left;
+}
+
+.rating-top-text-uline {
+    font-size: 30px;
+    color: #f67148;
+}
+
+.go-back-link {
+    margin-left: 20px;
+}
+
+.index-body {
+    width: 70%;
+}

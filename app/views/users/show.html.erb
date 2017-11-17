@@ -1,15 +1,18 @@
 <!-- heading -->
 
 <h1 class="profile-heading">Meet <%= @user.user_name %></h1>
-<% if @user == current_user %>
-  <span class="edit-profile-btn"><%= link_to 'Edit Profile', edit_user_registration_path(@user) %></span>
-<% end %>
+<hr class="half-rule"/>
 
+<p class="edit-profile">
+  <% if @user == current_user %>
+    <span class="edit-profile-link"><%= link_to 'Edit Profile', edit_user_registration_path(@user) %></span>
+  <% end %>
+</p><br><br>
 <!-- User information -->
 
 
-<p class="rating-top-text">Average Borrower rating: <%= @user.borrower_rating %>/5</p>
-<p class="rating-top-text">Average Loaner rating: <%= @user.loaner_rating %>/5</p>
+<p class="rating-top-text-uline">Average Borrower Rating: <%= @user.borrower_rating %>/5</p>
+<p class="rating-top-text-uline">Average Loaner Rating: <%= @user.loaner_rating %>/5</p>
 
 <div class="user-bio">
 
@@ -57,8 +60,8 @@
     </div>
   </div>
 </div>
-
-
+<br><br>
+<hr class="half-rule"/>
 <!-- leave a review -->
 <p class="leave-review-text">Leave A Review Of:</p>
 <div class="row review-box">

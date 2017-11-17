@@ -1,11 +1,12 @@
-<h1 class="edit-account-title">Edit Your account</h1>
+<h1 class="profile-heading">Edit Your account</h1>
+<hr class="half-rule"/>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "post-form form-group") do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "edit-profile-input" %>
+    <%= f.label :email, class: "reviews-box-text" %><br />
+    <%= f.email_field :email, autofocus: true, class: "edit-profile-input title-input title-box title-text form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -13,36 +14,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off", class: "edit-profile-input"%>
+    <%= f.label :current_password, "Current Password", class: "reviews-box-text" %> <i>(We need your current password to confirm your changes!)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off", class: "edit-profile-input title-input title-box title-text form-control"%>
   </div>
 
   <div class="field">
-    <%= f.label "New Password" %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off",class: "edit-profile-input" %>
+    <%= f.label "New Password", class: "reviews-box-text"%> <i>(Leave blank if you don't want to change it!)
+    <br><em><%= @minimum_password_length %> characters minimum</em>
+    </i><br />
+    <%= f.password_field :password, autocomplete: "off", class: "edit-profile-input title-input title-box title-text form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label "Confirm New Password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "edit-profile-input" %>
+    <%= f.label "Confirm New Password", class: "reviews-box-text"%><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "edit-profile-input title-input title-box title-text form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio, placeholder: "optional", autofocus: true, class: "bio-input" %>
+    <%= f.label :bio, class: "reviews-box-text"%><br />
+    <%= f.text_area :bio, placeholder: "optional", autofocus: true, class: "bio-input desc-input new-post-text form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update Profile" %>
+    <%= f.submit "Update Profile", class: "send-msg-button" %>
   </div>
 <% end %>
 
 
-<%= link_to "Go Back", :back %>
+<%= link_to "Go Back", :back, class: "go-back-link" %>
 
 <!-- Cancel account -->
-<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "delete-account-btn" %>
+<br><br>
+<hr class="half-rule"/>
+<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "delete-account-btn send-msg-button" %>

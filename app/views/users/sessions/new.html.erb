@@ -1,13 +1,14 @@
 <h2>Log in</h2>
+<hr class="half-rule"/>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, class: "reviews-box-text" %><br />
     <%= f.email_field :email, autofocus: true, class: "login-input" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, class: "reviews-box-text" %><br />
     <%= f.password_field :password, autocomplete: "off", class: "login-input" %>
   </div>
 
@@ -19,7 +20,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "login-input" %>
+    <%= f.submit "Log in", class: "login-input send-msg-button" %>
   </div>
 <% end %>
 
