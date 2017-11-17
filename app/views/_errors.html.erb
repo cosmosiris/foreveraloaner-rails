@@ -1,5 +1,9 @@
-<ul>
-  <% @errors.each do |error| %>
-    <li><%= error %></li>
+ <% if @errors %>
+    <div id="error_explanation">
+      <ul>
+        <% @errors.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</ul>

@@ -6,10 +6,9 @@ class Review < ApplicationRecord
 
   def valid_transaction
     if self.role == "borrower"
-      errors.add(:reviewee, "Cannot review someone you have not borrowed from") unless self.reviewer.users_loaned_from.include?(self.reviewee)
+      self.errors.add :base, "Cannot review someone you have not borrowed from" unless self.reviewer.users_loaned_from.include?(self.reviewee)
     else
-      errors.add(:reviewee, "Cannot review someone you have not loaned anything to") unless self.reviewer.users_loaned_to.include?(self.reviewee)
+      self.errors.add :base, "Cannot review someone you have not lent to" unless self.reviewer.users_loaned_to.include?(self.reviewee)
     end
   end
-
 end
