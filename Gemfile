@@ -66,5 +66,3 @@ gem 'devise'
 gem "paperclip", "~> 5.0.0"
 
 
-#bundler
-gem 'bundler', '~> 1.16.0'

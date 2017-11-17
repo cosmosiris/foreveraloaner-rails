@@ -94,6 +94,8 @@ GEM
     execjs (2.7.0)
     extra_print (1.1.2)
       awesome_print (~> 1.8, >= 1.8.0)
+    faker (1.8.4)
+      i18n (~> 0.5)
     ffi (1.9.18)
     formatador (0.2.5)
     globalid (0.4.1)
@@ -266,6 +268,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   extra_print
+  faker
   guard-livereload (~> 2.5)
   httparty
   jbuilder (~> 2.5)
