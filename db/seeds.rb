@@ -42,7 +42,7 @@ chainsaw.tags.create!(name: "chopping")
 chainsaw.tags << tools
 
 
-leaf_blower = Post.create!(title: "Leaf Blower", description: "Cordless jet fan leaf blower", price: "$50/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: true, loaner_id: 4, category: farm_and_garden)
+leaf_blower = Post.create!(title: "Leaf Blower", description: "Cordless jet fan leaf blower", price: "$50/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: true, loaner_id: 1, category: farm_and_garden)
 leaf_blower.tags.create(name: "leaf blower")
 leaf_blower.tags.create(name: "fall tools")
 leaf_blower.tags << tools
@@ -86,6 +86,21 @@ disco.tags << party
 disco.tags.create!(name: "dance")
 disco.tags.create!(name: "70s")
 disco.tags.create!(name: "lights")
+
+Transaction.create(borrower: second_user, post: leaf_blower, duration: "3 days", final_price: 10)
+
+Review.create(rating: 3, body: "The leaf blower was great and worked wonderfully! My yard was leaf free in less than an hour. However, Olivia was unresponsive when I went to pick the leaf blower up. She would not answer my messages and I ended up waiting for awhile until she finally came to give me the leaf blower. She did apologize though.", reviewer: second_user, reviewee: example_user, role: "borrower")
+
+
+
+
+
+
+
+
+
+
+
 
 
 
