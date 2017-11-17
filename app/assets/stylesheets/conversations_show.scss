@@ -1,0 +1,43 @@
+.sender-text {
+  font-size: 30px;
+  margin-top: 30px;
+  color: #f67148;
+}
+
+.message-box{
+  width: 55%;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 4px;
+  border: 1px solid #cfd4d9;
+  border-radius: 5px;
+}
+
+.send-msg-box {
+  width: 55%;
+  padding: 10px;
+  margin: 20px;
+  margin-top: -8px;
+  border: 1px solid #cfd4d9;
+  border-radius: 5px;
+}
+
+.send-msg-button {
+  margin: 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #cfd4d9;
+  border-style: solid;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.send-msg-button:hover {
+  background-color: #66EEAA;
+  cursor: pointer;
+}
+
+.delete-link {
+  margin-left: 20px;
+}

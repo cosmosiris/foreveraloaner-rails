@@ -7,14 +7,15 @@
 
 <!-- User information -->
 
-<p>Average Borrower rating: <%= @user.borrower_rating %>/5</p>
-<p>Average Loaner rating: <%= @user.loaner_rating %>/5</p>
+
+<p class="rating-top-text">Average Borrower rating: <%= @user.borrower_rating %>/5</p>
+<p class="rating-top-text">Average Loaner rating: <%= @user.loaner_rating %>/5</p>
+
 <div class="user-bio">
 
-  <p class="underline">About <%= @user.user_name.capitalize %></p>
-  <p> <%= @user.bio %></p>
+<p> <%= @user.bio %></p>
 </div>
-<p class="underline"><%= @user.user_name.capitalize %>'s Postings</p>
+<p class="user-postings-text"><%= @user.user_name.capitalize %>'s Postings</p>
 <ul>
   <% @user.posts.each do |post| %>
     <% if post.status == "open" %>
@@ -25,13 +26,13 @@
 
 <!-- User's reviews -->
 <div class="users-review-box">
-  <p>Reviews of <%= @user.user_name.capitalize %></p>
+  <p class="reviews-box-text">Reviews of <%= @user.user_name.capitalize %></p>
   <div class="row">
     <div class="col">
-       <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
+       <th class="rvw-col-border"><%= @user.user_name %> as a Loaner:</th>
     </div>
     <div class="col">
-      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th>
+      <th class="rvw-col-border"><%= @user.user_name %> as a Borrower:</th>
     </div>
     <div class="w-100"></div>
     <div class="col">
@@ -59,23 +60,23 @@
 
 
 <!-- leave a review -->
-<p>Leave a review of</p>
+<p class="leave-review-text">Leave A Review Of:</p>
 <div class="row review-box">
   <div class="col">
     <!-- User as a loaner -->
     <div class="leave-review-box">
-      <p class="rev-center"><%= @user.user_name.capitalize %> as a loaner</p>
-      <%= form_for([current_user, @review]) do |form| %>
-        <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
-        <%= form.hidden_field :role, :value=> "borrower" %>
-        <%= form.hidden_field :reviewee_id, :value=> @user.id %>
+      <p class="rev-center reviews-box-text"><%= @user.user_name.capitalize %> as a loaner</p>
+        <%= form_for([current_user, @review]) do |form| %>
+          <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
+          <%= form.hidden_field :role, :value=> "borrower" %>
+          <%= form.hidden_field :reviewee_id, :value=> @user.id %>
 
-        <%= form.text_area :body, class: "review-body", placeholder: "message" %><br>
+          <%= form.text_area :body, class: "review-body", placeholder: "message" %><br>
 
         <div class="submit-review">
-          <%= form.label :rating %>
+          <%= form.label :rating, class: "rating-text" %>
           <%= form.select :rating, [1, 2, 3, 4, 5] %>
-          <%= form.submit %>
+          <%= form.submit "Submit Review", class: "review-button"%>
         </div>
       <% end %>
     </div>
@@ -83,18 +84,18 @@
   <div class="col">
     <!-- user as a borrower -->
     <div class="leave-review-box">
-      <p class="rev-center"><%= @user.user_name.capitalize %> as a borrower</p>
-      <%= form_for([current_user, @review]) do |form| %>
-        <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
-        <%= form.hidden_field :role, :value=> "loaner" %>
-        <%= form.hidden_field :reviewee_id, :value=> @user.id %>
+      <p class="rev-center reviews-box-text"><%= @user.user_name.capitalize %> as a borrower</p>
+      <%= form_for([current_user, @review]) do |f| %>
+        <%= f.hidden_field :reviewer_id, :value=> current_user.id %>
+        <%= f.hidden_field :role, :value=> "loaner" %>
+        <%= f.hidden_field :reviewee_id, :value=> @user.id %>
 
-        <%= form.text_area :body, class: "review-body", placeholder: "message" %><br>
+        <%= f.text_area :body, class: "review-body", placeholder: "message" %><br>
 
         <div class="submit-review">
-          <%= form.label :rating %>
-          <%= form.select :rating, [1, 2, 3, 4, 5] %>
-          <%= form.submit %>
+          <%= f.label :rating, class: "rating-text" %>
+          <%= f.select :rating, [1, 2, 3, 4, 5] %>
+          <%= f.submit "Submit Review", class: "review-button"%>
         </div>
       <% end %>
     </div>

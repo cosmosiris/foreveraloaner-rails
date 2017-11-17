@@ -1,19 +1,22 @@
-<h1><%= @conversation.subject %></h1>
+<h1 class="profile-heading"><%= @conversation.subject %></h1>
 
 <% @conversation.receipts_for(current_user).each do |receipt| %>
   <div>
-    <strong><div><%= receipt.message.sender.name %> said: </div></strong>
-    <%= receipt.message.body %>
+    <strong><div class="sender-text"><%= receipt.message.sender.name %> said: </div></strong>
+    <div class="message-box">
+      <%= receipt.message.body %>
+    </div>
   </div>
 <% end %>
 
+<strong><p class="sender-text">Reply:</p></strong>
 <%= form_tag conversation_messages_path(@conversation), method: :post do %>
   <div>
-    <%= text_area_tag :body %>
+    <%= text_area_tag :body, nil, placeholder: "Say Something!", class: "send-msg-box" %>
   </div>
 
-  <%= submit_tag 'Send Message' %>
+  <%= submit_tag 'Send Message', class: "send-msg-button" %>
 
 <% end %>
 
-<%= link_to 'Delete', conversation_path(@conversation), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete', conversation_path(@conversation), class: "delete-link", method: :delete, data: { confirm: 'Are you sure?' } %>
