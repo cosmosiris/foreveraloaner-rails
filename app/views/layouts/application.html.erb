@@ -54,9 +54,12 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
 
-      <% if @errors %>
-        <%= render partial: "layouts/errors" %>
-      <% end %>
+
+
+        <%= render "layouts/errors" %>
+
+  
+
       <div class="body"><%= yield %></div>
     </div>
   </body>
