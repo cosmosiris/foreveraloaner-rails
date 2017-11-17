@@ -48,29 +48,12 @@ class User < ApplicationRecord
     nil
   end
 
-  def average_borrower_rating
-    total = 0
-    self.received_borrower_reviews do |review|
-      total += review.rating
-    end
-    if self.received_borrower_reviews.length == 0
-      return total / 1
-    else
-      return total / self.received_borrower_reviews.length
-    end
+  def loaner_rating
+    self.received_loaner_reviews.average(:rating).to_f.round(1)
   end
 
-  def average_loaner_rating
-    total = 0
-    self.received_loaner_reviews do |review|
-      total += review.rating
-    end
-    if self.received_loaner_reviews.length == 0
-      return total / 1
-    else
-      return total / self.received_loaner_reviews.length
-    end  
+  def borrower_rating
+    self.received_borrower_reviews.average(:rating).to_f.round(1)
   end
-
 
 end

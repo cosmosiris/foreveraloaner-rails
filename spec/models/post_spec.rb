@@ -3,11 +3,12 @@ require 'rails_helper'
 describe Post do
     let(:bob) { User.create(first_name: "Robert", 
                             last_name: "Vance",
-                            bio: "A fungi",
+                            bio: "Bob Vance, of Vance Refrigeration",
                             phone_number: "888-888-8888",
                             user_name: "BobVance",
                             email:"bob@vancerefridgeration.com",
                             password: "bobvance" )}
+
     let(:phyllis) { User.create(first_name: "Phyllis",
                             last_name: "Lapin", 
                             bio: "Close your mouth honey, you look like a trout", 
@@ -15,14 +16,18 @@ describe Post do
                             user_name: "EasyRider",
                             email:"mothergoose@dundermifflin.com",
                             password: "phallice" )}
+
     let(:category) { Category.create(name: "Garden") }
-    let(:post) { Post.create(title: "Lawn Mower", 
-                             description: "Mows your grass", 
-                             price: "$40/week", 
-                             status: "open", 
-                             negotiable: true, 
-                             loaner: bob, 
-                             category: category)}
+
+    let(:post) { Post.create(title: "Refrigerator",
+                             description: "portable",
+                             price: "$20/week",
+                             status: "open",
+                             zip_code: "18503",
+                             city: "Scranton",
+                             negotiable: true,
+                             category: category,
+                             loaner: bob )}
 
   context "when input is valid" do
     it "creates a new post in the database" do
@@ -30,15 +35,15 @@ describe Post do
     end
 
     it "has a title" do
-      expect(post.title).to eq "Lawn Mower"
+      expect(post.title).to eq "Refrigerator"
     end
 
     it "has a description" do
-      expect(post.description).to eq "Mows your grass"
+      expect(post.description).to eq "portable"
     end
 
     it "has a price" do
-      expect(post.price).to eq "$40/week"
+      expect(post.price).to eq "$20/week"
     end
 
     it "has a status" do
@@ -106,7 +111,9 @@ describe Post do
                                         post: post,
                                         duration: "2 days",
                                         final_price: 50)
-      @tag = Tag.create( name: "paper")
+
+      @tag = Tag.create(name: "mini-fridge")
+
       @post_tag = PostTag.create(tag: @tag, post: post) 
     end
 
@@ -134,22 +141,31 @@ describe Post do
 
   context "Post#search" do
     before(:each) do 
-      @book = Post.create(title: "a book",
-                          description: "read it lol",
-                          price: "50/yourlife",
-                          status: "open",
-                          negotiable: true,
-                          loaner: bob,
-                          category: category,
-                          location: "91210")
-    end 
+      @fridge = Post.create(title: "Refrigerator",
+                            description: "portable",
+                            price: "$20/week",
+                            status: "open",
+                            zip_code: "18503",
+                            city: "Scranton",
+                            negotiable: true,
+                            category: category,
+                            loaner: bob )
 
-    it "allows users to search by a post's title" do 
-      expect(Post.search("book")).to include(@book)
+      @tag = Tag.create(name: "mini-fridge")
+
+      @post_tag = PostTag.create(tag: @tag, post: @fridge) 
+  end 
+
+    it "allows users to search posts by title with a search term" do 
+      expect(Post.search("refrigerator")).to include(@fridge)
     end
 
-    it "allows users to search by a post's tags" do 
-      expect(Post.in_zips("91210")).to include(@book)
+    it "allows users to search posts by tags with a search term" do
+      expect(Post.search("mini")).to include(@fridge)
+    end
+
+    it "returns posts by zipcode" do 
+      expect(Post.in_zips("18503")).to include(@fridge)
     end 
   end
 end
