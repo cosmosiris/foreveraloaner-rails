@@ -96,16 +96,26 @@ describe User do
                                         post: @post,
                                         duration: "2 days",
                                         final_price: 50)
-      @borrower_review = Review.create(rating: "3",
+      @borrower_review = Review.create(rating: "5",
                                        body: "refrigerator",
                                        reviewer: bob,
                                        reviewee: phyllis,
                                        role:"loaner")
-      @loaner_review = Review.create(rating: "3",
+      @second_borrower_review = Review.create(rating: "1",
+                                       body: "waffle iron",
+                                       reviewer: bob,
+                                       reviewee: phyllis,
+                                       role:"loaner")
+      @loaner_review = Review.create(rating: "4",
                                      body: "paper",
                                      reviewer: phyllis,
                                      reviewee: bob,
                                      role:"borrower")
+      @second_loaner_review = Review.create(rating: "4",
+                                            body: "paper",
+                                            reviewer: phyllis,
+                                            reviewee: bob,
+                                            role:"borrower")
 
     end 
 
@@ -125,6 +135,7 @@ describe User do
     end 
 
     context "borrowing items" do 
+
       it "can borrow an item" do 
         expect(phyllis.borrowed_posts).to include(@post)
       end 
@@ -176,11 +187,25 @@ describe User do
       end
     end
 
-    # context "User#name" do
+    context "User#name" do
       
+      it "is combines the user's first and last name" do
+        expect(bob.name).to eq "Robert Vance"
+      end
+    end
+
+    # context "User#rating" do
+
+    #   it "averages the ratings of the user as a borrower" do
+    #     p "*" * 100
+    #     p phyllis.received_borrower_reviews
+    #     p phyllis.received_borrower_reviews.rating
+    #     expect(phyllis.average_borrower_rating).to eq 3 
+    #   end
+
+    #   it "averages the ratings of the user as a loaner" do
+    #     expect(bob.average_loaner_rating).to eq 4
+    #   end
     # end
-
   end 
-
-
 end

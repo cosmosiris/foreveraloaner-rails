@@ -41,24 +41,36 @@ class User < ApplicationRecord
   # TODO: write two methods: borrower_rating and loaner_rating, which averages the overall ratings received by an user
   # Write tests for said methods
   def name
-    "#{user_name}"
+    "#{first_name} #{last_name}"
   end
 
   def mailboxer_email(object)
     nil
   end
 
-
-  def average_rating
+  def average_borrower_rating
     total = 0
-    self.reviews.each do |review|
+    self.received_borrower_reviews do |review|
       total += review.rating
     end
-    if self.reviews.length == 0
+    if self.received_borrower_reviews.length == 0
       return total / 1
     else
-      return total / self.reviews.length
+      return total / self.received_borrower_reviews.length
     end
   end
+
+  def average_loaner_rating
+    total = 0
+    self.received_loaner_reviews do |review|
+      total += review.rating
+    end
+    if self.received_loaner_reviews.length == 0
+      return total / 1
+    else
+      return total / self.received_loaner_reviews.length
+    end  
+  end
+
 
 end
