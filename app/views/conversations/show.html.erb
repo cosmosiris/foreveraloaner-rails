@@ -9,6 +9,7 @@
   </div>
 <% end %>
 
+<strong><p class="sender-text">Reply:</p></strong>
 <%= form_tag conversation_messages_path(@conversation), method: :post do %>
   <div>
     <%= text_area_tag :body, nil, placeholder: "Say Something!", class: "send-msg-box" %>
