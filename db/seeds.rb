@@ -19,11 +19,18 @@ categories = ["Accessories", "Baby & Kid Products", "Beauty Products", "Books", 
 
 categories.map! { |category| Category.create(name: category) }
 
+#Farm and Garden
 Post.create!(title: "100 Series John Deere Lawn Mower", description: "You can borrow my 2016 100 Series John Deere riding mower and it is in great condition and can mow 1/3 of an acre up to 2 acres.", price: "$100/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: true, loaner_id: 1, category: farm_and_garden)
 Post.create!(title: "Just Your Average Garden Hoe", description: "Thick blade with sharp edge for strength and clean cuts, fiberglass handle", price: "$5/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: false, loaner_id: 2, category: farm_and_garden)
-Post.create!(title: "18 inch 40.2cc Gas Chainsaw", description: "Professional-grade 18 in. bar cuts up to 36 in. diameter logs.", price: "$70/day", status: "open", zip_code: "98116", city: "
-	Seattle", negotiable: false, loaner_id: 3, category: farm_and_garden)
+Post.create!(title: "18 inch 40.2cc Gas Chainsaw", description: "Professional-grade 18 in. bar cuts up to 36 in. diameter logs.", price: "$70/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: false, loaner_id: 3, category: farm_and_garden)
+Post.create!(title: "Leaf Blower", description: "Cordless jet fan leaf blower", price: "$50/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: true, loaner_id: 4, category: farm_and_garden)
+Post.create!(title: "Pressure Washer", description: "Electric pressure washer, lightweight and compact. Lightly used.", price: "$40/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: false, loaner_id: 3, category: farm_and_garden)
 
-
+#Party Supplies
+Post.create!(title: "Refillable Helium Tank", description: "Great for filling up balloons for your kid's birthday party. Comes empty.", price: "$5/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: true, loaner_id: 5, category: party_supplies)
+Post.create!(title: "Tiki Torches (6)", description: "Crowd pleaser for your next tropically themed party.  Great condition!", price: "$5/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: false, loaner_id: 2, category: farm_and_garden)
+Post.create!(title: "18 inch 40.2cc Gas Chainsaw", description: "Professional-grade 18 in. bar cuts up to 36 in. diameter logs.", price: "$70/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: false, loaner_id: 3, category: farm_and_garden)
+Post.create!(title: "Leaf Blower", description: "Cordless jet fan leaf blower", price: "$50/day", status: "open", zip_code: "18929", city: "Jamison", negotiable: true, loaner_id: 4, category: farm_and_garden)
+Post.create!(title: "Pressure Washer", description: "Electric pressure washer, lightweight and compact. Lightly used.", price: "$40/day", status: "open", zip_code: "98116", city: "Seattle", negotiable: false, loaner_id: 3, category: farm_and_garden)
 
 

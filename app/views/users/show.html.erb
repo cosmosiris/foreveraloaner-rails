@@ -26,27 +26,37 @@
 <!-- User's reviews -->
 <div class="users-review-box">
   <p>Reviews of <%= @user.user_name.capitalize %></p>
-  <table style="width:100%">
-    <tr>
-      <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
+  <div class="row">
+    <div class="col">
+       <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
+    </div>
+    <div class="col">
       <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th>
-    </tr>
-    <tr>
-       <%@user.received_loaner_reviews.each do |review| %>
-       <td class="rvw-col-border">
-          <p><%= review.body %></p>
-          <p><%= review.rating %>/5</p>
-       </td>
-       <%end %>
-       <%@user.received_borrower_reviews.each do |review| %>
-       <td class="rvw-col-border">
-          <p><%= review.body %></p>
-          <p><%= review.rating %>/5</p>
-       </td>
-       <%end %>
-    </tr>
-  </table>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+      <table style="width:100%">
+         <%@user.received_loaner_reviews.each do |review| %>
+         <tr class="rvw-col-border">
+            <p><%= review.body %></p>
+            <p><%= review.rating %>/5</p>
+         </tr>
+         <%end %>
+      </table>
+    </div>
+    <div class="col">
+      <table style="width:100%">
+         <%@user.received_borrower_reviews.each do |review| %>
+         <tr class="rvw-col-border">
+            <p><%= review.body %></p>
+            <p><%= review.rating %>/5</p>
+         </tr>
+         <%end %>
+      </table>
+    </div>
+  </div>
 </div>
+
 
 <!-- leave a review -->
 <p>Leave a review of</p>
