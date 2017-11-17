@@ -1,6 +1,4 @@
 <div>
-	<%= render 'errors' %>
-
 	<p class="post-title"><%= @post.title %></p>
 
 	<%= image_tag @post.image.url(:medium) %>
@@ -19,7 +17,7 @@
 	  <tr>
 	    <td><%= @post.price %></td>
 	    <td><%= @post.status %></td> 
-		<td><%= link_to @post.loaner.name.capitalize, user_path(@post.loaner) %></td>
+		<td><%= link_to @post.loaner.user_name.capitalize, user_path(@post.loaner) %></td>
 		<td><%= @post.city %></td>
 		<td><%= @post.zip_code %></td>
 	  <% if @post.negotiable %>

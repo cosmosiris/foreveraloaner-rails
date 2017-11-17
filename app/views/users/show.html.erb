@@ -6,9 +6,11 @@
 <% end %>
 
 <!-- User information -->
+
 <p>Average Borrower rating: <%= @user.average_borrower_rating %>/5</p>
 <p>Average Loaner rating: <%= @user.average_loaner_rating %>/5</p>
 <div class="user-bio">
+
   <p class="underline">About <%= @user.user_name.capitalize %></p>
   <p> <%= @user.bio %></p>
 </div>
@@ -24,27 +26,37 @@
 <!-- User's reviews -->
 <div class="users-review-box">
   <p>Reviews of <%= @user.user_name.capitalize %></p>
-  <table style="width:100%">
-    <tr>
-      <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
-      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th> 
-    </tr>
-    <tr>
-       <%@user.received_loaner_reviews.each do |review| %>
-       <td class="rvw-col-border">
-          <p><%= review.body %></p>
-          <p><%= review.rating %>/5</p>
-       </td>
-       <%end %>
-       <%@user.received_borrower_reviews.each do |review| %>
-       <td class="rvw-col-border">
-          <p><%= review.body %></p>
-          <p><%= review.rating %>/5</p>
-       </td>
-       <%end %>  
-    </tr>
-  </table>
+  <div class="row">
+    <div class="col">
+       <th class="rvw-col-border"><%= @user.user_name %> as a loaner</th>
+    </div>
+    <div class="col">
+      <th class="rvw-col-border"><%= @user.user_name %> as a borrower</th>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+      <table style="width:100%">
+         <%@user.received_loaner_reviews.each do |review| %>
+         <tr class="rvw-col-border">
+            <p><%= review.body %></p>
+            <p><%= review.rating %>/5</p>
+         </tr>
+         <%end %>
+      </table>
+    </div>
+    <div class="col">
+      <table style="width:100%">
+         <%@user.received_borrower_reviews.each do |review| %>
+         <tr class="rvw-col-border">
+            <p><%= review.body %></p>
+            <p><%= review.rating %>/5</p>
+         </tr>
+         <%end %>
+      </table>
+    </div>
+  </div>
 </div>
+
 
 <!-- leave a review -->
 <p>Leave a review of</p>
@@ -52,7 +64,7 @@
   <div class="col">
     <!-- User as a loaner -->
     <div class="leave-review-box">
-      <p class="center"><%= @user.user_name.capitalize %> as a loaner</p>
+      <p class="rev-center"><%= @user.user_name.capitalize %> as a loaner</p>
       <%= form_for([current_user, @review]) do |form| %>
         <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
         <%= form.hidden_field :role, :value=> "borrower" %>
@@ -66,12 +78,12 @@
           <%= form.submit %>
         </div>
       <% end %>
-    </div>    
+    </div>
   </div>
   <div class="col">
     <!-- user as a borrower -->
     <div class="leave-review-box">
-      <p class="center"><%= @user.user_name.capitalize %> as a borrower</p>
+      <p class="rev-center"><%= @user.user_name.capitalize %> as a borrower</p>
       <%= form_for([current_user, @review]) do |form| %>
         <%= form.hidden_field :reviewer_id, :value=> current_user.id %>
         <%= form.hidden_field :role, :value=> "loaner" %>

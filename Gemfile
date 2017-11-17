@@ -67,3 +67,4 @@ gem 'jquery-rails'
 #paperclip gem for image loading
 gem "paperclip", "~> 5.0.0"
 
+
