@@ -1,3 +1,5 @@
+<h1 class="profile-heading"><%= @category.name%></h1>
+
 <%= form_tag(posts_path, method: :get) do %>
   <%= text_field_tag :term, params[:term], placeholder: "Keyword" %>
   <%= text_field_tag :zip_code, params[:zip_code], placeholder: "Zip Code"%>
