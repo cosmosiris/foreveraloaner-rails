@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Category do
   let(:category) { Category.create(name: "Kitchen Appliances") }
+
   let(:bob) { User.create(first_name: "Robert", 
                           last_name: "Vance",
                           bio: "Bob Vance, of Vance Refrigeration",
@@ -9,6 +10,7 @@ describe Category do
                           user_name: "BobVance",
                           email:"bob@vancerefrigeration.com",
                           password: "bobvance" )}
+  
   let(:post) { Post.create(title: "Refrigerator",
                            description: "portable",
                            price: "$20/week",
