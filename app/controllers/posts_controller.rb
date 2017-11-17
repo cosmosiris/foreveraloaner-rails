@@ -47,7 +47,6 @@ class PostsController < ApplicationController
 	end
 
 	def update
-		p post_params
 		@categories = Category.all
 		@post = Post.find(params[:id])
 		@post.update_attributes(post_params)
@@ -60,14 +59,11 @@ class PostsController < ApplicationController
 		end
 	end
 
-
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
 		redirect_to categories_path, notice: "Post was successfully destroyed"
 	end
-
-	
 
 	private
 
@@ -78,5 +74,4 @@ class PostsController < ApplicationController
 	def search_params
 		params.require(:search).permit(:keyword)
  	end
-
 end

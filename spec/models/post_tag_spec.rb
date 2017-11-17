@@ -4,7 +4,7 @@ describe PostTag do
   let(:category) { Category.create(name: "Garden") }
   let(:bob) { User.create(first_name: "Robert", 
                           last_name: "Vance",
-                          bio: "A fungi",
+                          bio: "Bob Vance, of Vance Refrigeration",
                           phone_number: "888-888-8888",
                           user_name: "BobVance",
                           email:"bob@vancerefrigeration.com",
