@@ -22,7 +22,7 @@ Caroline Yoon => @carolyoon
 1. Ruby on Rails & Ruby
 2. ZipCodeApi (for finding zip codes within a certain radius)
 3. Paperclip Gem (for uploading images)
-4. Devise
+4. Devise (for user authentication/registration)
 3. HTML
 4. JQuery & Javascript
 5. CSS
@@ -30,3 +30,4 @@ Caroline Yoon => @carolyoon
 
 ### Demo
 https://foreveraloaner.herokuapp.com/ 
+
