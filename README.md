@@ -10,6 +10,15 @@ Everything is setup for you. All you need to do is:
 4. `rails db:seed`
 5. `rails s`
 
+### Current Features
+1. Users can create an account and post an item they want to loan
+2. Users can search for items
+3. Users can visit the profile of a loaner or borrower they are interested in working with
+4. Users can review a person they have borrowed from
+5. Users can review a person they have loaned an item to
+
+### Stretch Goals
+1. Booking/Payment system for making a security deposit when reserving an item  
 
 ### Contributors
 Iris Nevins => @cosmosiris
