@@ -21,11 +21,11 @@ Everything is setup for you. All you need to do is:
 1. Booking/Payment system for making a security deposit when reserving an item  
 
 ### Contributors
-Iris Nevins => @cosmosiris
-Olivia Morgan => @livy1159
-Shannon Nolan => @shannonnolan17
-Brittney Flowers => @beatnikflow
-Caroline Yoon => @carolyoon
+* Iris Nevins => @cosmosiris
+* Olivia Morgan => @livy1159
+* Shannon Nolan => @shannonnolan17
+* Brittney Flowers => @beatnikflow
+* Caroline Yoon => @carolyoon
 
 ### Technologies 
 1. Ruby on Rails & Ruby
