@@ -16,7 +16,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
@@ -32,13 +32,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -50,6 +50,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 #location-api
@@ -60,7 +61,11 @@ gem 'httparty'
 #login, logout, user authentication
 gem 'devise'
 
+#UX / UI
+gem 'jquery-rails'
+
 
 #paperclip gem for image loading
 gem "paperclip", "~> 5.0.0"
+
 

@@ -6,14 +6,14 @@ class Post < ApplicationRecord
 	has_many	  :tags, through: :post_tags
   has_many 	  :transactions
 
-	validates 	:title, :description, :price, :status, :loaner_id, :category_id, :status, presence: true
+	validates 	:title, :description, :price, :status, :loaner_id, :category_id, :city, :zip_code, presence: true
   
   #the validation below is neccessary because false values do not pass validation tests
   validates_inclusion_of :negotiable, in: [true, false]
 
   #location-api
   scope :search, -> (search_term) { left_outer_joins(:tags).where('lower(name) LIKE ? OR lower(title) LIKE ?', "%#{search_term.downcase}%", "%#{search_term.downcase}%").distinct.order('id DESC') }
-  scope :in_zips, -> (zip_codes) { where(location: zip_codes) }
+  scope :in_zips, -> (zip_codes) { where(zip_code: zip_codes) }
 
   #paperclip
   has_attached_file :image, styles: {large: "600x600>", medium: "300x300>", thumb:"150x150#"}, default_url: "no_image_available.png"

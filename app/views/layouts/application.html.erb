@@ -4,50 +4,49 @@
     <title>Foreveraloaner</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag   'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <div class="row">
       <div class="left-body-column">
-        <h2>Column 1</h2>
-          <ul class="nav">
-            <li class="nav-li"><%= link_to "Home", categories_path  %></li>
-              <% if user_signed_in?  %>
-                  <li class="nav-li"><%= link_to "Logout", destroy_user_session_path, method: "DELETE" %></li>
-                  <li class="nav-li"> <%= link_to "My Profile", user_path(current_user)  %></li>
-                  <li class="nav-li"><%= link_to "Create a Post", new_post_path  %></li>
-              <% else %>
-                  <li class="nav-li"><%= link_to "Login", new_user_session_path %></li>
-                  <li class="nav-li"><%= link_to "Register", new_user_registration_path  %></li>
-              <% end %>
-      </div>
-    </div>
-      <div class="dropdown">
-        <button class="dropbtn">Categories</button>
-          <div class='dropdown-content'>
-            <ul class='menu-scroll'>
-              <% @categories.each do |category| %>
-                <%= link_to category.name, category_path(category) %>
-              <% end %>
-            </ul>
-          </div>
-      </div>
-
-
-
-
-
-
-
+        <ul class="nav">
+          <li class="nav-li"><%= link_to "Home", categories_path  %></li>
+            <% if user_signed_in?  %>
+                <li class="nav-li"><%= link_to "Logout", destroy_user_session_path, method: "DELETE" %></li>
+                <li class="nav-li"> <%= link_to "My Profile", user_path(current_user)  %></li>
+                <li class="nav-li"><%= link_to "Create a Post", new_post_path  %></li>
+                <li class="nav-li"><%= link_to "Chats", conversations_path %></li>
+            <% else %>
+                <li class="nav-li"><%= link_to "Login", new_user_session_path %></li>
+                <li class="nav-li"><%= link_to "Register", new_user_registration_path  %></li>
+            <% end %>
           </ul>
-      </div>
+
+        <div class="search-bar">
+          <%= form_tag(posts_path, method: :get, :class => 'search-style') do %>
+            <%= text_field_tag :term, params[:term], placeholder: "Keyword", class: 'col-md-5 input-lg keyword-box' %>
+            <%= text_field_tag :zip_code, params[:zip_code], placeholder: "Zip Code", class:"col-md-3 input-lg" %>
+            <%= text_field_tag :distance, params[:distance], placeholder: "Miles", class:"col-md-3 input-lg" %>
+            <%= submit_tag 'Search', name: nil, class: 'col-md-12 btn'  %>
+          <% end %>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Categories</button>
+            <div class='dropdown-content'>
+              <ul class='menu-scroll'>
+                <% @categories.each do |category| %>
+                  <%= link_to category.name, category_path(category) %>
+                <% end %>
+             </ul>
+           </div>
+         </div>
+        </div>
     </div>
 
     <div class="right-body-column"%>
-      <h2>Column 2</h2>
-      <p>Some text..</p>
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
         <% end %>
@@ -55,9 +54,12 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
 
-      <% if @errors %>
-        <%= render partial: "errors" %>
-      <% end %>
+
+
+        <%= render "layouts/errors" %>
+
+
+
       <div class="body"><%= yield %></div>
     </div>
   </body>

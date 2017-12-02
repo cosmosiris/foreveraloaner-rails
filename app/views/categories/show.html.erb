@@ -1,19 +1,20 @@
-<h1>Categories Show/Post Index</h1>
+<h1 class="profile-heading"><%= @category.name%></h1>
 
 <%= form_tag(posts_path, method: :get) do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= text_field_tag :zip_code, params[:zip_code] %>
-  <%= text_field_tag :distance, params[:distance] %>
+  <%= text_field_tag :term, params[:term], placeholder: "Keyword" %>
+  <%= text_field_tag :zip_code, params[:zip_code], placeholder: "Zip Code"%>
+  <%= text_field_tag :distance, params[:distance], placeholder: "Distance In Miles" %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
 <% @posts.each do |post| %>
-	<ul>
+	<ul class="posts-list">
 		<li><%= image_tag post.image.url(:thumb) %></li>
 		<li><%= link_to post.title, post_path(post) %>, <%=post.price %> </li>
+		<li><%= post.city %> </li>
 		<p><%= post.description%></p>
 		<% post.tags.each do |tag| %>
-			<span><%= tag.name %></span>
+			<span class="single-tag-box"><%= tag.name %></span>
 		<% end %>
 	</ul>
 <% end %>

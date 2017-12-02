@@ -1,13 +1,14 @@
 <h1>Search Results</h1>
 
 <% @posts.each do |post| %>
-  <ul>
+  <ul class="posts-list">
   	<li><%= image_tag post.image.url(:thumb) %></li>
-    <li><%= link_to post.title, post_path(post) %>, $<%=post.price %> </li>
+    <li><%= link_to post.title, post_path(post) %>, <%=post.price %> </li>
+    <li><%= post.city %> </li>
     <p><%= post.description%></p>
 
     <% post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
+      <span class="single-tag-box"><%= tag.name %></span>
     <% end %>
   </ul>
 <% end %>
