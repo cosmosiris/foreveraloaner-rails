@@ -12,10 +12,12 @@ Everything is setup for you. All you need to do is:
 
 ### Current Features
 1. Users can create an account and post an item they want to loan
-2. Users can search for items
+2. Users can search for items 
 3. Users can visit the profile of a loaner or borrower they are interested in working with
 4. Users can review a person they have borrowed from
 5. Users can review a person they have loaned an item to
+6. In-app private messaging
+7. Full test-suite 
 
 ### Stretch Goals
 1. Booking/Payment system for making a security deposit when reserving an item  
@@ -32,10 +34,11 @@ Everything is setup for you. All you need to do is:
 2. ZipCodeApi (for finding zip codes within a certain radius)
 3. Paperclip Gem (for uploading images)
 4. Devise (for user authentication/registration)
-3. HTML
-4. JQuery & Javascript
-5. CSS
-6. Bootstrap
+5. Mailboxer Gem (for in-app messaging)
+6. HTML
+7. JQuery & Javascript
+8. CSS
+9. Bootstrap
 
 ### Demo
 https://foreveraloaner.herokuapp.com/ 
