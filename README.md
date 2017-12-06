@@ -1,5 +1,7 @@
 ### Forever A Loaner 
-This app is a service for people who want to borrow things from other people. It was initially supposed to be a Rails-Reat app, but without enough time to learn React we ended up starting over and doing just a rails app. 
+This app is a service for people who want to borrow things from other people. It was initially supposed to be a Rails-React app, but we only had 7 days to build the app which was not enough time to learn React. On the 3rd day we decided to switch gears and start over will a full rails app. 
+
+Because of the loss of 3 days, we were not able to add all of the features that we wanted such as a payment system for reserving an item. But we are happy with the end product--a fully functioning rails app accompanied by a full test-suite. 
 
 ### Forking This Repo
 Everything is setup for you. All you need to do is:
@@ -12,7 +14,7 @@ Everything is setup for you. All you need to do is:
 
 ### Current Features
 1. Users can create an account and post an item they want to loan
-2. Users can search for items 
+2. Users can search for items by keyword. Our zipcode API key is no longer working so searching by zip-code is currently not working. 
 3. Users can visit the profile of a loaner or borrower they are interested in working with
 4. Users can review a person they have borrowed from
 5. Users can review a person they have loaned an item to
@@ -39,6 +41,16 @@ Everything is setup for you. All you need to do is:
 7. JQuery & Javascript
 8. CSS
 9. Bootstrap
+
+### Screenshots
+### Landing Page 
+![Landing Page](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/landing-page.png)
+![User Profile](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/profile-page.png)
+![Post](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/post-show.png)
+![Search Results](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/search-results.png)
+![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-box.png)
+![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-feature.png)
+
 
 ### Demo
 https://foreveraloaner.herokuapp.com/ 
