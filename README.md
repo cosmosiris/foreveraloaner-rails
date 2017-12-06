@@ -45,9 +45,13 @@ Everything is setup for you. All you need to do is:
 ### Screenshots
 ### Landing Page 
 ![Landing Page](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/landing-page.png)
+### User Profile
 ![User Profile](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/profile-page.png)
+### A Post
 ![Post](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/post-show.png)
+### Search Results
 ![Search Results](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/search-results.png)
+### Messaging
 ![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-box.png)
 ![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-feature.png)
 
