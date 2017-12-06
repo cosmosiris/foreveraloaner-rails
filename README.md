@@ -51,8 +51,9 @@ Everything is setup for you. All you need to do is:
 ![Post](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/post-show.png)
 ### Search Results
 ![Search Results](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/search-results.png)
-### Messaging
+### Communicate with someone from their profile page
 ![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-box.png)
+### Message Thread 
 ![Messaging](https://raw.githubusercontent.com/cosmosiris/foreveraloaner-rails/development/public/github-images/chat-feature.png)
 
 
