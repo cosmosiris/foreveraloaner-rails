@@ -24,7 +24,6 @@ module ZipCodeAdapter
     zips = res.parsed_response['zip_codes'].map do |zip|
       zip['zip_code']
     end
-
     zips
   end
 end
